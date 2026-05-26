@@ -16,15 +16,15 @@ Hệ thống cần kiểm thử: **Quản lý mượn sách Thư viện ABC** �
 
 | | Thông tin |
 |---|---|
-| **Tên nhóm** | `<!-- VD: Nhóm 1 -->` |
-| **Lớp** | `<!-- VD: SE001.P11 -->` |
-| **Học kỳ** | `<!-- VD: HK2 2025-2026 -->` |
+| **Tên nhóm** | `GROUP 04` |
+| **Lớp** | `252ICT2012.P1` |
+| **Học kỳ** | ` HK2 2025-2026 ` |
 
 | # | MSSV | Họ và tên | Vai trò |
 |---|------|-----------|---------|
-| 1 | | | Nhóm trưởng |
-| 2 | | | Thành viên |
-| 3 | | | Thành viên |
+| 1 |23BA14051 |Nguyễn Khải Điệp | Nhóm trưởng |
+| 2 |23BA14055 |Nguyễn Phúc Đức | Thành viên |
+| 3 |22BI13374 |Nguyễn Minh Quân | Thành viên |
 | 4 | | | Thành viên |
 
 ---
