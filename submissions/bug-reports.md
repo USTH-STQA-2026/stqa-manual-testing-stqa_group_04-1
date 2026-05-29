@@ -56,6 +56,57 @@
 
 ---
 
+## BUG-01
+
+| Thuộc tính | Chi tiết |
+|-----------|---------|
+| **Mã lỗi** | BUG-01 |
+| **TC liên quan** | TC-12 |
+| **REQ liên quan** | REQ-03 |
+| **Mức độ** | High |
+| **Người phát hiện** | Nguyễn Phúc Đức |
+| **Ngày phát hiện** |29/05/2026 |
+| **Trạng thái** | Open |
+
+**Tiêu đề:**
+Chức năng lọc sách không hoạt động, trả về danh sách rỗng với mọi giá trị hợp lệ
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+Đã đăng nhập hệ thống với tài khoản Thành viên hoặc Thủ thư.
+Đang ở Tab "sách" 
+
+**Bước tái hiện:**
+1. Mở màn hình Sách.
+2. Tại ô Lọc theo thể loại, nhập một thể loại hợp lệ (ví dụ: Kinh tế).
+3. Quan sát danh sách sách được hiển thị.
+4. Thử lại với các thể loại khác như Công nghệ, Giáo dục, Quản trị, Văn học
+
+**Kết quả mong đợi:**
+Khi nhập Kinh tế, hệ thống chỉ hiển thị các sách thuộc thể loại Kinh tế (BOOK007, BOOK014, BOOK015 theo SRS và TC-12).
+Các thể loại khác cũng phải trả về đúng danh sách sách tương ứng.
+
+**Kết quả thực tế:**
+Hệ thống hiển thị thông báo "Không tìm thấy sách nào."
+Danh sách kết quả rỗng mặc dù trong hệ thống tồn tại sách thuộc thể loại đã nhập.
+Lỗi xảy ra với mọi giá trị thể loại đã kiểm tra.
+
+**Tác động:**
+Người dùng không thể sử dụng chức năng lọc theo thể loại.
+Vi phạm yêu cầu REQ-03 về tìm kiếm và lọc sách.
+Gây khó khăn trong việc tra cứu sách khi số lượng sách lớn.
+TC-12 thất bại.
+**Minh chứng:**
+![alt text]({C01E8E70-8053-4BAB-A3E5-017B3DA6BE33}.png)
+![alt text]({BF32ECAC-BA9D-4635-A941-CE1F796F7E28}.png)
+**Đề xuất xử lý:**
+Kiểm tra logic so sánh giá trị thể loại giữa dữ liệu sách và giá trị nhập từ ô lọc.
+
+--- 
 ## BUG-02
 
 | Thuộc tính | Chi tiết |
