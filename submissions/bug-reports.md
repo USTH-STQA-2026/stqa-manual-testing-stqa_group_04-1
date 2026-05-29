@@ -112,35 +112,49 @@ Kiểm tra logic so sánh giá trị thể loại giữa dữ liệu sách và g
 | Thuộc tính | Chi tiết |
 |-----------|---------|
 | **Mã lỗi** | BUG-02 |
-| **TC liên quan** | `<!-- TC-xx -->` |
-| **REQ liên quan** | `<!-- REQ-xx -->` |
-| **Mức độ** | `<!-- High / Medium / Low -->` |
-| **Người phát hiện** | `<!-- Họ tên thành viên -->` |
-| **Ngày phát hiện** | `<!-- DD/MM/YYYY -->` |
-| **Trạng thái** | `<!-- Open / Closed -->` |
+| **TC liên quan** | TC-25 |
+| **REQ liên quan** | REQ-07 |
+| **Mức độ** | High |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện** | 29/05/2026 |
+| **Trạng thái** | open |
 
 **Tiêu đề:**
-`<!-- Mô tả hành vi lỗi -->`
+Không thể thêm thành viên mới do hệ thống từ chối mọi email hợp lệ
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết**
+Đăng nhập bằng tài khoản Thủ thư.
+Đang ở màn hình Thành viên → Thêm thành viên mới.
 
 **Bước tái hiện:**
-1. `<!-- -->`
-2. `<!-- -->`
-3. `<!-- -->`
+1. Đăng nhập với tài khoản Thủ thư.
+2. Mở màn hình Thêm thành viên mới.
+3. Nhập họ tên hợp lệ. (ví dụ: Nguyen Van A)
+4. Nhập email hợp lệ (ví dụ: test@gmail.com hoặc các email hợp lệ khác).
+5. Nhập số điện thoại hợp lệ (ví dụ: 0981677166)
 
 **Kết quả mong đợi:**
-`<!-- -->`
+Hệ thống chấp nhận email hợp lệ, tạo thành viên mới thành công và hiển thị thành viên trong danh sách.
 
 **Kết quả thực tế:**
-`<!-- -->`
+Hệ thống luôn hiển thị thông báo: "email không hợp lệ"
 
 **Tác động:**
-`<!-- -->`
+Thủ thư không thể thêm thành viên mới vào hệ thống.
+Chức năng Quản lý thành viên (REQ-07) không thể sử dụng.
+TC-25 thất bại.
+Ảnh hưởng trực tiếp đến nghiệp vụ quản lý thư viện.
 
 **Minh chứng:**
-`<!-- -->`
+![alt text]({BE777298-F752-4E33-830C-FC73C24D9E2C}.png)
 
 **Đề xuất xử lý:**
-`<!-- -->`
+Kiểm tra logic kiểm tra định dạng email trên form thêm thành viên.
 
 ---
 
