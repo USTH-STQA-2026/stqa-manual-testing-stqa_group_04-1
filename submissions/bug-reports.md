@@ -158,4 +158,53 @@ Kiểm tra logic kiểm tra định dạng email trên form thêm thành viên.
 
 ---
 
+## BUG-03
+
+| Thuộc tính | Chi tiết |
+|-----------|---------|
+| **Mã lỗi** | BUG-03 |
+| **TC liên quan** | TC-18 |
+| **REQ liên quan** | REQ-04 |
+| **Mức độ** | High |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện** | 29/05/2026 |
+| **Trạng thái** | Open |
+
+**Tiêu đề:**
+Hệ thống cho phép thành viên mượn vượt quá giới hạn tối đa 3 sách
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+Thành viên Còn hoạt động.
+Còn sách ở trạng thái "Có sẵn".
+
+**Bước tái hiện:**
+1. Đăng nhập bằng tài khoản thành viên Trần Dực Dẫm.
+2. Mượn quyển sách 'Lập trình Flutter cơ bản'
+3. Mượn quyển sách 'Cấu trúc dữ liệu và giải thuật'
+4. Mượn quyển sách 'Trí tuệ nhân tạo đại cương'
+5. Mượn quyển sách 'Mạng máy tính'
+
+**Kết quả mong đợi:**
+Khi thành viên đã mượn đủ 3 sách, hệ thống phải từ chối tạo phiếu mượn mới và hiển thị thông báo : "đã đạt giới hạn mượn tối đa(3 sách)
+**Kết quả thực tế:**
+Hệ thống vẫn tạo thêm phiếu mượn mới, dẫn đến việc thành viên có 4 phiếu mượn
+
+**Tác động:**
+Cho phép vượt quá giới hạn số sách được mượn.
+Làm dữ liệu mượn sách không chính xác.
+TC-18 thất bại.
+
+**Minh chứng:**
+![alt text]({B464CAB8-D20B-4056-A63B-7112416E0FD4}.png)
+
+**Đề xuất xử lý:**
+Kiểm tra logic đếm số phiếu đang hoạt động trước khi tạo phiếu mượn mới. Chỉ cho phép tạo phiếu khi số lượng phiếu trạng thái Đang mượn hoặc Quá hạn nhỏ hơn 3.
+
+---
+
 <!-- Copy template BUG trên để thêm BUG-03, BUG-04, ... cho mỗi TC Fail -->
