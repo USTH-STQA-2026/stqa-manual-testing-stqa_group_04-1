@@ -64,12 +64,12 @@
 | **TC liên quan** | TC-12 |
 | **REQ liên quan** | REQ-03 |
 | **Mức độ** | High |
-| **Người phát hiện** | Nguyễn Phúc Đức |
+| **Người phát hiện** | Nguyen Phuc Duc |
 | **Ngày phát hiện** |29/05/2026 |
 | **Trạng thái** | Open |
 
 **Tiêu đề:**
-Chức năng lọc sách không hoạt động, trả về danh sách rỗng với mọi giá trị hợp lệ
+Category filter does not work and returns an empty result for all valid category values.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -77,34 +77,27 @@ Chức năng lọc sách không hoạt động, trả về danh sách rỗ
 - Ngôn ngữ giao diện: Tiếng Việt
 
 **Điều kiện tiên quyết:**
-Đã đăng nhập hệ thống với tài khoản Thành viên hoặc Thủ thư.
-Đang ở Tab "sách" 
+- Logged into the system as either a Member or Librarian.
+- Currently on the Books tab.
 
 **Bước tái hiện:**
-1. Mở màn hình Sách.
-2. Tại ô Lọc theo thể loại, nhập một thể loại hợp lệ (ví dụ: Kinh tế).
-3. Quan sát danh sách sách được hiển thị.
-4. Thử lại với các thể loại khác như Công nghệ, Giáo dục, Quản trị, Văn học
+1. Enter "Kinh tế" in the category filter field.
+2. Apply the filter.
+3. Observe the displayed book list.
+4. Repeat the test with other valid categories such as "Công nghệ", "Giáo dục", "Quản trị", and "Văn học".
 
 **Kết quả mong đợi:**
-Khi nhập Kinh tế, hệ thống chỉ hiển thị các sách thuộc thể loại Kinh tế (BOOK007, BOOK014, BOOK015 theo SRS và TC-12).
-Các thể loại khác cũng phải trả về đúng danh sách sách tương ứng.
-
+The system should display books belonging to the selected category. For example, when entering "Kinh tế", only Economics books should be displayed.
 **Kết quả thực tế:**
-Hệ thống hiển thị thông báo "Không tìm thấy sách nào."
-Danh sách kết quả rỗng mặc dù trong hệ thống tồn tại sách thuộc thể loại đã nhập.
-Lỗi xảy ra với mọi giá trị thể loại đã kiểm tra.
+The system displays the message "No books found". The result list is empty even though books belonging to the selected category exist in the system.
 
 **Tác động:**
-Người dùng không thể sử dụng chức năng lọc theo thể loại.
-Vi phạm yêu cầu REQ-03 về tìm kiếm và lọc sách.
-Gây khó khăn trong việc tra cứu sách khi số lượng sách lớn.
-TC-12 thất bại.
+Users cannot use the category filtering feature. This violates REQ-03 and causes TC-12 to fail.
 **Minh chứng:**
 ![alt text]({C01E8E70-8053-4BAB-A3E5-017B3DA6BE33}.png)
 ![alt text]({BF32ECAC-BA9D-4635-A941-CE1F796F7E28}.png)
 **Đề xuất xử lý:**
-Kiểm tra logic so sánh giá trị thể loại giữa dữ liệu sách và giá trị nhập từ ô lọc.
+Review the category filtering logic and verify that category values are correctly matched against the stored book categories.
 
 --- 
 ## BUG-02
@@ -120,7 +113,7 @@ Kiểm tra logic so sánh giá trị thể loại giữa dữ liệu sách và g
 | **Trạng thái** | open |
 
 **Tiêu đề:**
-Không thể thêm thành viên mới do hệ thống từ chối mọi email hợp lệ
+The system rejects valid email addresses when adding a new member.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -128,33 +121,28 @@ Không thể thêm thành viên mới do hệ thống từ chối mọi email h�
 - Ngôn ngữ giao diện: Tiếng Việt
 
 **Điều kiện tiên quyết**
-Đăng nhập bằng tài khoản Thủ thư.
-Đang ở màn hình Thành viên → Thêm thành viên mới.
+- Logged in as a Librarian.
 
 **Bước tái hiện:**
-1. Đăng nhập với tài khoản Thủ thư.
-2. Mở màn hình Thêm thành viên mới.
-3. Nhập họ tên hợp lệ. (ví dụ: Nguyen Van A)
-4. Nhập email hợp lệ (ví dụ: test@gmail.com hoặc các email hợp lệ khác).
-5. Nhập số điện thoại hợp lệ (ví dụ: 0981677166)
+1. Open the Add New Member form.
+2. Enter a valid full name (e.g., Nguyen Van A).
+3. Enter a valid email address (e.g., test@gmail.com).
+4. Enter a valid phone number (e.g., 0981677166).
+5. Click the "Add Member" button.
 
 **Kết quả mong đợi:**
-Hệ thống chấp nhận email hợp lệ, tạo thành viên mới thành công và hiển thị thành viên trong danh sách.
+The system should accept the valid email address and successfully create a new member record.
 
 **Kết quả thực tế:**
-Hệ thống luôn hiển thị thông báo: "email không hợp lệ"
+The system displays the error message "Invalid email address" and prevents member creation.
 
 **Tác động:**
-Thủ thư không thể thêm thành viên mới vào hệ thống.
-Chức năng Quản lý thành viên (REQ-07) không thể sử dụng.
-TC-25 thất bại.
-Ảnh hưởng trực tiếp đến nghiệp vụ quản lý thư viện.
-
+Librarians cannot add new members. The Member Management feature (REQ-07) becomes unusable and TC-25 fails.
 **Minh chứng:**
 ![alt text]({BE777298-F752-4E33-830C-FC73C24D9E2C}.png)
 
 **Đề xuất xử lý:**
-Kiểm tra logic kiểm tra định dạng email trên form thêm thành viên.
+Review the email validation logic and ensure that valid email formats are accepted correctly.
 
 ---
 
@@ -171,7 +159,7 @@ Kiểm tra logic kiểm tra định dạng email trên form thêm thành viên.
 | **Trạng thái** | Open |
 
 **Tiêu đề:**
-Hệ thống cho phép thành viên mượn vượt quá giới hạn tối đa 3 sách
+The system allows a member to borrow more than the maximum limit of three books.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -179,32 +167,75 @@ Hệ thống cho phép thành viên mượn vượt quá giới hạn tối đa 
 - Ngôn ngữ giao diện: Tiếng Việt
 
 **Điều kiện tiên quyết:**
-Thành viên Còn hoạt động.
-Còn sách ở trạng thái "Có sẵn".
+Member account is active.
+At least four books are available for borrowing.
 
 **Bước tái hiện:**
-1. Đăng nhập bằng tài khoản thành viên Trần Dực Dẫm.
-2. Mượn quyển sách 'Lập trình Flutter cơ bản'
-3. Mượn quyển sách 'Cấu trúc dữ liệu và giải thuật'
-4. Mượn quyển sách 'Trí tuệ nhân tạo đại cương'
-5. Mượn quyển sách 'Mạng máy tính'
+1. log in account member Trần Dực Dẫm.
+2. Borrow "Lập trình Flutter cơ bản".
+3. Borrow "Cấu trúc dữ liệu và giải thuật".
+4. Borrow "Trí tuệ nhân tạo đại cương".
+5. Borrow "Mạng máy tính".
 
 **Kết quả mong đợi:**
-Khi thành viên đã mượn đủ 3 sách, hệ thống phải từ chối tạo phiếu mượn mới và hiển thị thông báo : "đã đạt giới hạn mượn tối đa(3 sách)
+When a member has already borrowed three books, the system should reject any additional borrowing request and display a message indicating that the borrowing limit has been reached.
 **Kết quả thực tế:**
-Hệ thống vẫn tạo thêm phiếu mượn mới, dẫn đến việc thành viên có 4 phiếu mượn
+The system creates an additional borrowing record, allowing the member to have four active borrowed books at the same time.
 
 **Tác động:**
-Cho phép vượt quá giới hạn số sách được mượn.
-Làm dữ liệu mượn sách không chính xác.
-TC-18 thất bại.
+This violates the borrowing limit business rule, causes inaccurate borrowing records, and results in TC-18 failing.
 
 **Minh chứng:**
 ![alt text]({B464CAB8-D20B-4056-A63B-7112416E0FD4}.png)
 
 **Đề xuất xử lý:**
-Kiểm tra logic đếm số phiếu đang hoạt động trước khi tạo phiếu mượn mới. Chỉ cho phép tạo phiếu khi số lượng phiếu trạng thái Đang mượn hoặc Quá hạn nhỏ hơn 3.
+Verify the borrowing validation logic before creating a new borrowing record. The system should only allow borrowing when the number of active loans is less than three.
 
 ---
 
+## BUG-04
+
+| Thuộc tính | Chi tiết |
+|-----------|---------|
+| **Mã lỗi** | BUG-04 |
+| **TC liên quan** | TC-09 |
+| **REQ liên quan** | REQ-03 |
+| **Mức độ** | Medium |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện** |31/05/2026 |
+| **Trạng thái** | Open |
+
+**Tiêu đề:**
+Search function does not return matching books when using valid Vietnamese and non-accented keywords.
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+- User is logged into the system.
+- User is on the Books tab.
+- The book "Lập trình Flutter cơ bản" exists in the book list.
+
+**Bước tái hiện:**
+1. Enter the keyword "Lập" into the search box.
+2. Observe the search results.
+3. Clear the search box.
+4. Enter the keyword "lap" into the search box.
+5. Observe the search results.
+
+**Kết quả mong đợi:**
+The system should display the book "Lập trình Flutter cơ bản" because its title matches the entered keywords.
+**Kết quả thực tế:**
+The system displays "No books found" for both "Lập" and "lap", even though the matching book exists in the system.
+
+**Tác động:**
+Users cannot reliably search for books using Vietnamese keywords or non-accented keywords. This affects the Search Books feature and causes TC-09 to fail.
+
+**Minh chứng:**
+![alt text]({9EB6F3F1-E4FD-4605-A36D-F2C0E398337B}.png)
+![alt text]({3456BE69-DBBB-4040-B11F-24BAC4195670}.png)
+**Đề xuất xử lý:**
+Review the search logic and ensure that the system supports partial keyword matching, Vietnamese characters, and non-accented keyword normalization.
 <!-- Copy template BUG trên để thêm BUG-03, BUG-04, ... cho mỗi TC Fail -->
