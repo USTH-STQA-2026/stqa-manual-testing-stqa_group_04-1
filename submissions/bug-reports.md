@@ -4,57 +4,50 @@
 > Xem [examples/sample-bug-report.md](../examples/sample-bug-report.md) để hiểu cách viết bug report tốt.
 > Mỗi bug cần: tiêu đề mô tả hành vi lỗi, bước tái hiện, expected vs actual, severity + giải thích.
 
-| Thông tin | |
+| Information | |
 |---|---|
-| **Nhóm** | `GROUP_04` |
-| **Ngày báo cáo** | ` 29/05/2026 ` |
+| **Group** | `GROUP_04` |
+| **Report Date** | ` 29/05/2026 ` |
 
 ---
-
 ## BUG-01
 
-| Thuộc tính | Chi tiết |
-|-----------|---------|
-| **Mã lỗi** | BUG-01 |
-| **TC liên quan** | `<!-- TC-xx -->` |
-| **REQ liên quan** | `<!-- REQ-xx -->` |
-| **Mức độ** | `<!-- High / Medium / Low -->` |
-| **Người phát hiện** | `<!-- Họ tên thành viên -->` |
-| **Ngày phát hiện** | `<!-- DD/MM/YYYY -->` |
-| **Trạng thái** | `<!-- Open / Closed -->` |
+| Attribute         | Details          |
+| ----------------- | ---------------- |
+| **Bug ID**        | BUG_TC04         |
+| **Related TC**    | TC-04            |
+| **Related REQ**   | REQ-01           |
+| **Severity**      | Low              |
+| **Reported By**   | Nguyễn Khải Điệp |
+| **Date Reported** | 29/05/2026       |
+| **Status**        | Open             |
 
-**Tiêu đề:**
-`<!-- Mô tả hành vi lỗi cụ thể -->`
 
-**Môi trường:**
-- Trình duyệt: Chrome `<!-- version -->`
-- Hệ điều hành: `<!-- OS -->`
-- Ngôn ngữ giao diện: Tiếng Việt
+**Precondition**:
+The login page is open
 
-**Điều kiện tiên quyết:**
-`<!-- VD: Trang đăng nhập đã mở, dữ liệu đã reset -->`
+**Steps to Reproduce:**
+1. Enter valid email
+2.  Enter wrong password
+3. Click **Login**
 
-**Bước tái hiện:**
-1. `<!-- Bước 1 -->`
-2. `<!-- Bước 2 -->`
-3. `<!-- Bước 3 -->`
+**Expected value:**
+System shows error message: **"Incorrect password"** in the **Password** field  — different from the message for wrong email. Page does not change.
 
-**Kết quả mong đợi:**
-`<!-- Kết quả đúng theo SRS -->`
+** Actual Result:**
+The system displays the error message "Mật khẩu không đúng" in the **Email** field.The page does not navigate. 
 
-**Kết quả thực tế:**
-`<!-- Kết quả hệ thống thật sự trả về -->`
+**Impact:**
+Affects the user interface and may cause user confusion.
 
-**Tác động:**
-`<!-- VD: Vi phạm quy tắc nghiệp vụ cốt lõi, cho phép mượn vượt giới hạn -->`
+** Proof:**
+submissions\image_bug\BUG_TC04.png
 
-**Minh chứng:**
-`<!-- Đính kèm ảnh chụp màn hình nếu có -->`
-
-**Đề xuất xử lý:**
-`<!-- Gợi ý cách sửa lỗi nếu có -->` 
+**Suggested Fix:**
+Ensure that the "Incorrect password" validation message is displayed under the Password field instead of the Email field. Verify that validation messages are mapped to the correct input fields.
 
 ---
+
 
 ## BUG-01
 

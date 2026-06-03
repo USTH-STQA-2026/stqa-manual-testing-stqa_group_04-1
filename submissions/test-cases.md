@@ -145,7 +145,7 @@
 | TC-01 | Successful login with Librarian role | System loaded, on login page | 1. Open https://stqa.rbc.vn 2. Enter email 3. Enter password 4. Click **Login** | Email: `librarian@library.com` Password: `admin123` | Redirects to homepage. AppBar shows username + role **"Librarian"**. **Members** tab is visible in menu. | REQ-01 | Decision Table |
 | TC-02 | Successful login with Member role | System loaded, on login page | 1. Open https://stqa.rbc.vn 2. Enter email 3. Enter password 4. Click **Login** | Email: `ba.nguyen@email.com` Password: `password123` | Redirects to homepage. AppBar shows name + role **"Member"**. **No** Members tab in menu. | REQ-01 | Decision Table |
 | TC-03 | Reject — email does not exist in the system | On login page | 1. Enter email not in DB 2. Enter any password 3. Click **Login** | Email: `noexist@test.com` Password: `abc123` | System shows error message: **"Member not found"**. Page does not change. | REQ-01 | Decision Table |
-| TC-04 | Reject — wrong password (correct email) | On login page | 1. Enter valid email 2. Enter wrong password 3. Click **Login** | Email: `ba.nguyen@email.com` Password: `wrongpass` | System shows error message: **"Incorrect password"** — different from the message for wrong email. Page does not change. | REQ-01 | Decision Table |
+| TC-04 | Reject — wrong password (correct email) | On login page | 1. Enter valid email 2. Enter wrong password 3. Click **Login** | Email: `ba.nguyen@email.com` Password: `wrongpass` | System shows error message: **"Incorrect password"** in the **Password** field  — different from the message for wrong email. Page does not change. | REQ-01 | Decision Table |
 | TC-05 | Reject — both email and password left empty | On login page | 1. Leave both fields blank 2. Click **Login** | Email: `""` (empty) Password: `""` (empty) | System shows message: **"Please enter email and password"**. Page does not change. | REQ-01 | Decision Table |
 
 ---
@@ -160,7 +160,7 @@
 
 ---
 
-### Group 3 — Search and Filter Books (REQ-03) | 4 TCs | Technique: EP
+### Group 3 — Search and Filter Books (REQ-03) | 5 TCs | Technique: EP
 
 | TC ID | Test Objective | Precondition | Steps | Input Data | Expected Result | REQ | Technique |
 |-------|----------------|--------------|-------|------------|-----------------|-----|-----------|
@@ -168,7 +168,7 @@
 | TC-10 | Search by author name | Logged in, on **Books** tab | 1. Enter author name in search box 2. Observe results | Keyword: `Nguyen Minh Duc` | Shows **BOOK001** (Basic Flutter Programming) and **BOOK009** (Introduction to Python Programming) — both by the same author. | REQ-03 | EP |
 | TC-11 | Search with no results — appropriate message displayed | Logged in, on **Books** tab | 1. Enter keyword that matches no books 2. Observe results | Keyword: `xyznotexist999` | List is empty, shows message **"No books found"**. | REQ-03 | EP |
 | TC-12 | Filter by category — shows only books in that category | Logged in, on **Books** tab | 1. Select category **"Economics"** from the filter 2. Observe the list | Filter: `Economics` | Shows only **3 books**: BOOK007 (Microeconomics), BOOK014 (Macroeconomics), BOOK015 (Principles of Accounting). No books from other categories. | REQ-03 | EP |
-
+| TC-33 | Filter by category, case-insensitive.| Logged in, on **Books** tab | 1. Select category **"kinh tế"** or **"KInH tẾ"** from the filter 2. Observe the list | Filter: `Economics` | Shows only **3 books**: BOOK007 (Microeconomics), BOOK014 (Macroeconomics), BOOK015 (Principles of Accounting). No books from other categories. | REQ-03 | EP |
 ---
 
 ### Group 4 — Borrow Book (REQ-04) | 6 TCs | Technique: Decision Table + BVA
@@ -178,10 +178,11 @@
 | TC-13 | Borrow book successfully — all conditions met | `ba.nguyen` (MEM002, Active) is logged in. BOOK001 is "Available". `ba.nguyen` is borrowing < 3 books. | 1. Log in as `ba.nguyen` 2. Go to **Books** tab → BOOK001 3. Click **Borrow** 4. Go to **Borrow/Return** tab — verify new slip | Account: `ba.nguyen@email.com` / `password123` Book: BOOK001 | New borrow slip created successfully. Due date = **today + 14 days**. Slip status: **"Borrowed"**. BOOK001 changes to **"Borrowed"**. | REQ-04 | Decision Table |
 | TC-14 | Reject borrow — book is "Borrowed" | `ba.nguyen` is logged in. BOOK003 is **"Borrowed"** (by MEM002 — BR001 from Seed Data). | 1. Log in as `ba.nguyen` 2. Go to **Books** tab → BOOK003 3. Click **Borrow** | Account: `ba.nguyen@email.com` / `password123` Book: BOOK003 | System rejects and shows error message: book is **unavailable** / already borrowed. No new slip created. | REQ-04 | Decision Table |
 | TC-15 | Reject borrow — member account is **Suspended** | `cu.le` (MEM004, **Suspended**) is logged in. BOOK001 is "Available". | 1. Log in as `cu.le` 2. Go to **Books** tab → BOOK001 3. Click **Borrow** | Account: `cu.le@email.com` / `password123` Book: BOOK001 | System rejects and shows reason **"Suspended"** — message must be different from the "Expired" case. No slip created. | REQ-04 | Decision Table |
-| TC-16 | Reject borrow — member account has **Expired** | `binh.pham` (MEM005, **Expired**) is logged in. BOOK001 is "Available". | 1. Log in as `binh.pham` 2. Go to **Books** tab → BOOK001 3. Click **Borrow** | Account: `binh.pham@email.com` / `password123` Book: BOOK001 | System rejects and shows reason **"Expired"** — message must be different from the "Suspended" case. No slip created. | REQ-04 | Decision Table |
+| TC-16 | Reject borrow — member account has **Expired** | `binh.pham` (MEM005, **Expired**) is logged in. BOOK001 is "Available". | 1. Log in as `binh.pham` 2. Go to **Books** tab → BOOK001 3. Click **Borrow** | Account: `binh.pham@email.com` / `password123` Book: BOOK001 | System rejects and shows reason **"Expired"**. No slip created. | REQ-04 | Decision Table |
 | TC-17 | **BVA max−1=2** — Allow borrowing the 3rd book (at valid boundary) | `ba.nguyen` is logged in and **currently borrowing exactly 2 books**. An "Available" book exists to borrow. | 1. Log in as `ba.nguyen` 2. Borrow 1 book (if not yet at 2) to reach 2 books borrowed 3. Go to **Books** tab → select an Available book (e.g. BOOK002) 4. Click **Borrow** | Account: `ba.nguyen@email.com` / `password123` Books borrowed before action: **2** | Borrow **successful** — 3rd slip created. Total currently borrowed = **3**. No error message. | REQ-04 | BVA |
 | TC-18 | **BVA max=3** — Reject borrowing 4th book (exceeds limit) | `ba.nguyen` is logged in and **currently borrowing exactly 3 books** (limit reached). An "Available" book exists. | 1. Ensure `ba.nguyen` is borrowing exactly 3 books 2. Go to **Books** tab → select an Available book 3. Click **Borrow** | Account: `ba.nguyen@email.com` / `password123` Books borrowed before action: **3** | System rejects and shows message: **"3-book limit reached"** (or equivalent). No 4th slip created. | REQ-04 | BVA |
-
+| TC-34 | System rejects and shows reason in Vietnamese and English | `binh.pham` (MEM005, **Expired**) is logged in. BOOK001 is "Available". | 1. Log in as `binh.pham` 2. Go to **Books** tab → BOOK001 3. Click **Borrow** | Account: `binh.pham@email.com` / `password123` Book: BOOK001 | Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI or "The member account has expired. Borrowing books is not allowed." in EN
+ | REQ-04 | Decision Table |
 ---
 
 ### Group 5 — Return Book (REQ-05) | 4 TCs | Technique: EP
