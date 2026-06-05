@@ -389,4 +389,155 @@ Users cannot reliably search for books using Vietnamese keywords or non-accented
 ![alt text]({3456BE69-DBBB-4040-B11F-24BAC4195670}.png)
 **Đề xuất xử lý:**
 Review the search logic and ensure that the system supports partial keyword matching, Vietnamese characters, and non-accented keyword normalization.
+
+---
+
+## BUG-05
+
+| Thuộc tính | Chi tiết |
+|-----------|---------|
+| **Mã lỗi** | BUG-05 |
+| **TC liên quan** | TC-15 |
+| **REQ liên quan** | REQ-04 |
+| **Mức độ** | Low |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện** |31/05/2026 |
+| **Trạng thái** | Open |
+
+**Tiêu đề:**
+System displays an incorrect rejection reason when a suspended member attempts to borrow a book.
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+- Logged in with a suspended member account (e.g., cu.le@email.com).
+- At least one book is available for borrowing.
+
+
+**Bước tái hiện:**
+1. Select an available book from the Books tab.
+2. Click the Borrow button.
+3. Observe the displayed error message.
+
+**Kết quả mong đợi:**
+The system should reject the borrowing request and display a message indicating that the member account is 'suspended'.
+**Kết quả thực tế:**
+Member account has expired. Borrowing is not allowed.
+
+**Tác động:**
+- Provides incorrect information about the member's account status.
+- Violates the business rule requiring the system to display the correct rejection reason.
+- May confuse users and librarians when troubleshooting account issues.
+- Causes TC-15 to fail.
+
+**Minh chứng:**
+![alt text]({C19A29F5-F064-440A-A7C4-F1C16ADDB771}.png)
+**Đề xuất xử lý:**
+Review the account status validation logic and ensure that suspended accounts display a suspension-related message instead of an expiration-related message.
+
+## BUG-06
+
+| Thuộc tính | Chi tiết |
+|-----------|---------|
+| **Mã lỗi** | BUG-06 |
+| **TC liên quan** | TC-20 |
+| **REQ liên quan** | REQ-05 |
+| **Mức độ** | High |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện** |31/05/2026 |
+| **Trạng thái** | Open |
+
+**Tiêu đề:**
+Member can view borrowing records of another member.
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+- Logged in with a suspended member account (e.g., cu.le@email.com).
+- Another member account exists in the system with borrowing records.
+
+
+**Bước tái hiện:**
+1. Navigate to the Borrow / Return screen.
+2. Open the "Tra cứu phiếu mượn" tab.
+3. Enter another member's ID (e.g., MEM002) into the search field.
+4. Click the "Tra cứu" button.
+5. Observe the displayed borrowing records.
+
+**Kết quả mong đợi:**
+The system should only allow a member to view their own borrowing records. Access to other members' borrowing records must be denied.
+
+**Kết quả thực tế:**
+The system displays borrowing records belonging to another member (Nguyen Hoc Ba).
+
+**Tác động:**
+- Violates access control and privacy requirements.
+- Exposes borrowing information of other members.
+- Allows unauthorized access to personal borrowing records.
+- Causes the related test case to fail.
+
+**Minh chứng:**
+![alt text]({09C0A6A5-B812-48FD-A5F1-FFF6B953D1C2}.png)
+**Đề xuất xử lý:**
+Implement access control validation to ensure members can only access their own borrowing records. Search requests should be restricted to the currently authenticated member.
+
+
+## BUG-07
+
+| Thuộc tính | Chi tiết |
+|-----------|---------|
+| **Mã lỗi** | BUG-07 |
+| **TC liên quan** | TC-32 |
+| **REQ liên quan** | REQ-05 |
+| **Mức độ** | High |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện** |31/05/2026 |
+| **Trạng thái** | Open |
+
+**Tiêu đề:**
+Member can return books belonging to another member.
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+- Logged in with a suspended member account (e.g., cu.le@email.com).
+- Another member account exists in the system with borrowing records.
+
+
+**Bước tái hiện:**
+1. Navigate to the Borrow / Return screen.
+2. Open the "Tra cứu phiếu mượn" tab.
+3. Enter another member's ID (e.g., MEM002).
+4. Click the "Tra cứu" button.
+5. Locate a borrowing record belonging to that member.
+6. Click the "Trả sách" button.
+7. Observe the system response and borrowing record status.
+
+**Kết quả mong đợi:**
+The system must prevent members from modifying borrowing records that belong to other members. The Return Book action should only be available for the owner of the borrowing record or authorized librarians.
+
+
+**Kết quả thực tế:**
+The system allows a member to return a book belonging to another member and displays the message "Trả sách thành công."
+
+**Tác động:**
+- Violates access control requirements.
+- Allows unauthorized modification of another member's borrowing records.
+- Causes inaccurate borrowing history and inventory data.
+- Creates a serious security and data integrity issue.
+
+**Minh chứng:**
+![alt text]({949FDFDF-F7BB-4AFE-8B8E-4A2D72FF9C56}.png)
+**Đề xuất xử lý:**
+Implement authorization checks before processing return requests. The system should verify that the borrowing record belongs to the currently authenticated user or that the user has librarian privileges.
+
 <!-- Copy template BUG trên để thêm BUG-03, BUG-04, ... cho mỗi TC Fail -->

@@ -19,7 +19,7 @@
 | TC-01 |   Login   |  Navigate to the homepage. AppBar shows username and role "Thủ thư".         |  Navigate to the homepage. AppBar shows "Nguyễn Thủ Thư" and role "Thủ thư".The "Thành viên" tab is visible in the menu.         |**Pass**|-|  -   |
 | TC-02 |   Login   |  Navigate to the homepage. AppBar shows username and role "Thành viên".      |  Navigate to the homepage. AppBar shows "Nguyễn Học Bá" and role "Thành viên".The "Thành viên" tab is not visible in the menu.   |**Pass**|-|  -   | 
 | TC-03 |   Login   |  The system displays the error message "Không tìm thấy thành viên ".         |  The system displays the error message "Không tìm thấy thành viên".The page does not navigate.                                   |**Pass**|-|  -   | 
-| TC-04 |   Login   |  The system displays the error message "Mật khẩu không đúng" in the **Password** field                |  The system displays the error message "Mật khẩu không đúng" in the **Email** field.The page does not navigate.                                         |-|**Fail**|BUG|
+| TC-04 |   Login   |  The system displays the error message "Mật khẩu không đúng" in the **Password** field                |  The system displays the error message "Mật khẩu không đúng" in the **Email** field.The page does not navigate.                                         |**Fail**|-|BUG|
 | TC-05 |   Login   |  Displays "Vui lòng nhập email và mật khẩu".The page does not redirect.      | Displays "Vui lòng nhập email và mật khẩu".The page does not redirect.                                                           |**Pass**|-|  -   | 
 ### REQ-02/View Book List
 | TC ID | Functional Group | Expected Result (Summary) |  Actual Result  | Actual Result  | Proof  | Bug |
@@ -34,7 +34,7 @@
 | TC-10 |  Search and Filter Books   |  Shows BOOK001 and BOOK009 — both by the same author when searching "Nguyễn Minh Đức"  |  Displays BOOK001 and BOOK009. Books by other authors are hidden.  |**Pass**|-|  -   | 
 | TC-11 |  Search and Filter Books   |  List is empty, shows message "No books found".         |   List is empty, shows message "No books found".  |**Pass**|-|  -   | 
 | TC-12 |  Search and Filter Books   |  Shows only 3 books: BOOK007 (Kinh tế vi mô), BOOK014 (Kinh tế vĩ mô), BOOK015 (Nguyên lý kế toán). No books from other categories.| Shows only **3 books**: BOOK007, BOOK014, BOOK015. |**Pass**|-|  -   | 
-| TC-33 |  Search and Filter Books   |  Shows only 3 books: BOOK007 (Kinh tế vi mô), BOOK014 (Kinh tế vĩ mô), BOOK015 (Nguyên lý kế toán). No books from other categories.|  List is empty, shows message "No books found". |-|**Fail**|BUG |   
+| TC-33 |  Search and Filter Books   |  Shows only 3 books: BOOK007 (Kinh tế vi mô), BOOK014 (Kinh tế vĩ mô), BOOK015 (Nguyên lý kế toán). No books from other categories.|  List is empty, shows message "No books found". |**Fail**|-|BUG |   
 ### REQ-04/Borrow Book
 | TC ID | Functional Group | Expected Result (Summary) |  Actual Result  | Actual Result  | Proof  | Bug |
 |-------|------------------|---------------------------------------------------------|----------------------------------------------------------------|---------|-----------|----| 
@@ -43,8 +43,8 @@
 | TC-15 |  Borrow Book   |  System rejects and shows reason **"Suspended"** — message must be different from the "Expired" case. No slip created.| System rejects and shows error message:"Thành viên đã hết hạn. Không thể mượn sách."-the same message as the "Expired" case. |**Fail**|-|  BUG   | 
 | TC-16 |  Borrow Book   |  System rejects and shows reason **"Expired"**. No slip created.| System rejects and shows error message:"Thành viên đã hết hạn. Không thể mượn sách." |**Pass**|-|-|
 | TC-17 |  Borrow Book   |  Borrow **successful** — 3rd slip created. Total currently borrowed = **3**. No error message.|  Borrow **successful** — 3rd slip created. Total currently borrowed = **3**. No error message. |**Pass**|-|  -   | 
-| TC-18 |  Borrow Book   |  System rejects and shows message: **"3-book limit reached"** (or equivalent). No 4th slip created.|System rejects and shows message: **"3-book limit reached"** (or equivalent). No 4th slip created. |-|**Pass**|- |
-| TC-34 |  Borrow Book   |  Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI or "The member account has expired. Borrowing books is not allowed." in EN|Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI and EN |-|**Fail**|BUG |
+| TC-18 |  Borrow Book   |  System rejects and shows message: **"3-book limit reached"** (or equivalent). No 4th slip created.|System rejects and shows message: **"3-book limit reached"** (or equivalent). No 4th slip created. |**Pass**|-|- |
+| TC-34 |  Borrow Book   |  Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI or "The member account has expired. Borrowing books is not allowed." in EN|Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI and EN |**Fail**|-|BUG |
 ---
 
 ## Tổng hợp kết quả
