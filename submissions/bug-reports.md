@@ -22,6 +22,10 @@
 | **Date Reported** | 29/05/2026       |
 | **Status**        | Open             |
 
+**Environment:**
+- Browser: 148.0.7778.217(64 bit)
+- OS: Windows 11
+- UI Language: Vietnamese
 
 **Precondition**:
 The login page is open
@@ -41,7 +45,7 @@ The system displays the error message "Mật khẩu không đúng" in the **Emai
 Affects the user interface and may cause user confusion.
 
 ** Proof:**
-submissions\image_bug\BUG_TC04.png
+![BUG_TC04](image_bug/BUG_TC04.png)
 
 **Suggested Fix:**
 Ensure that the "Incorrect password" validation message is displayed under the Password field instead of the Email field. Verify that validation messages are mapped to the correct input fields.
@@ -49,7 +53,7 @@ Ensure that the "Incorrect password" validation message is displayed under the P
 ---
 
 
-## BUG-01
+## BUG-02
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
@@ -93,6 +97,160 @@ Users cannot use the category filtering feature. This violates REQ-03 and causes
 Review the category filtering logic and verify that category values are correctly matched against the stored book categories.
 
 --- 
+
+## BUG-03 Điệp
+| Attribute         | Details          |
+| ----------------- | ---------------- |
+| **Bug ID**        | BUG_TC33         |
+| **Related TC**    | TC-33            |
+| **Related REQ**   | REQ-03           |
+| **Severity**      | Medium              |
+| **Reported By**   | Nguyễn Khải Điệp |
+| **Date Reported** | 29/05/2026       |
+| **Status**        | Open             |
+
+**Environment:**
+- Browser: 148.0.7778.217(64 bit)
+- OS: Windows 11
+- UI Language: Vietnamese
+
+**Precondition**:
+Logged in, on Books tab
+
+**Steps to Reproduce:**
+1. Select category "kinh tế" or "KInH tẾ" from the filter
+2. Observe the list
+
+**Expected value:**
+Shows only 3 books: BOOK007 (Kinh tế vi mô), BOOK014 (Kinh tế vĩ mô), BOOK015 (Nguyên lý kế toán). No books from other categories.
+
+**Actual Result:**
+List is empty, shows message "No books found".
+
+**Impact:**
+Reduces search efficiency, as users must enter the exact letter casing (uppercase/lowercase) to find matching results.
+
+**Proof:**
+![BUG_TC33](image_bug/BUG_TC33.png)
+
+**Suggested Fix:**
+Make the category filter case-insensitive by normalizing both the user input and stored category values before comparison. The filter should return the same results regardless of uppercase or lowercase letters.
+
+## BUG-04 Điệp
+| Attribute         | Details          |
+| ----------------- | ---------------- |
+| **Bug ID**        | BUG_TC14         |
+| **Related TC**    | TC-14            |
+| **Related REQ**   | REQ-04           |
+| **Severity**      | Low              |
+| **Reported By**   | Nguyễn Khải Điệp |
+| **Date Reported** | 29/05/2026       |
+| **Status**        | Open             |
+
+**Environment:**
+- Browser: 148.0.7778.217(64 bit)
+- OS: Windows 11
+- UI Language: Vietnamese
+
+**Precondition**:
+**ba.nguyen** is logged in. BOOK003 is "Borrowed" (by MEM002 — BR001 from Seed Data).
+
+**Steps to Reproduce:**
+ 1. Log in as `ba.nguyen`
+ 2. Go to **Books** tab → BOOK003 
+ 3. Click **Borrow** 
+
+**Expected value:**
+System rejects and shows error message: book is **unavailable** / already borrowed. No new slip created.
+
+**Actual Result:**
+BOOK003 does not have the (+) button,the borrow action cannot be performed.No error message is displayed.
+
+**Impact:**
+The absence of a notification message makes it difficult for users to identify the issue.
+
+** Proof:**
+![BUG_TC14](image_bug/BUG_TC14.png)
+
+**Suggested Fix:**
+Display a clear notification message when a book is unavailable or already borrowed. If the Borrow (+) button is hidden for unavailable books, provide a visible status indicator and explanatory message so users understand why the borrow action cannot be performed.
+
+## BUG-05 Điệp
+| Attribute         | Details          |
+| ----------------- | ---------------- |
+| **Bug ID**        | BUG_TC15         |
+| **Related TC**    | TC-15            |
+| **Related REQ**   | REQ-04           |
+| **Severity**      | Medium              |
+| **Reported By**   | Nguyễn Khải Điệp |
+| **Date Reported** | 29/05/2026       |
+| **Status**        | Open             |
+
+**Environment:**
+- Browser: 148.0.7778.217(64 bit)
+- OS: Windows 11
+- UI Language: Vietnamese
+
+**Precondition**:
+ `cu.le` (MEM004, **Suspended**) is logged in. BOOK001 is "Available". 
+
+**Steps to Reproduce:**
+ 1. Log in as `cu.le`
+ 2. Go to Books tab → BOOK001
+ 3. Click **Borrow**
+
+**Expected value:**
+System rejects and shows reason "Suspended" — message must be different from the "Expired" case. No slip created.
+
+**Actual Result:**
+System rejects and shows error message:"Thành viên đã hết hạn. Không thể mượn sách."-the same message as the "Expired" case.
+
+**Impact:**
+The inaccurate error message may mislead users about the actual cause of the issue.
+
+** Proof:**
+![BUG_TC15](image_bug/BUG_TC15.png)
+
+**Suggested Fix:**
+Display a specific error message for suspended accounts, such as "Member account is suspended. Borrowing books is not allowed." Ensure that suspended and expired account statuses are handled separately and show different messages to accurately reflect the reason for rejection.
+
+## BUG-06 Điệp
+| Attribute         | Details          |
+| ----------------- | ---------------- |
+| **Bug ID**        | BUG_TC34         |
+| **Related TC**    | TC-34            |
+| **Related REQ**   | REQ-04           |
+| **Severity**      | High              |
+| **Reported By**   | Nguyễn Khải Điệp |
+| **Date Reported** | 29/05/2026       |
+| **Status**        | Open             |
+
+**Environment:**
+- Browser: 148.0.7778.217(64 bit)
+- OS: Windows 11
+- UI Language: Vietnamese
+
+**Precondition**:
+`binh.pham` (MEM005, Expired) is logged in. BOOK001 is "Available".ble". 
+
+**Steps to Reproduce:**
+1. Log in as binh.pham
+2. Go to Books tab → BOOK001 
+3. Click Borrow
+
+**Expected value:**
+Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI or "The member account has expired. Borrowing books is not allowed." in EN
+
+**Actual Result:**
+Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI and EN
+
+**Impact:**
+Impacts both the user interface and user experience.
+** Proof:**
+![BUG_TC34](image_bug/BUG_TC34.png)
+
+**Suggested Fix:**
+Implement proper localization for error messages. When the interface language is set to English, display "The member account has expired. Borrowing books is not allowed." instead of the Vietnamese message. Ensure all system messages are translated according to the selected language setting.
 ## BUG-02
 
 | Thuộc tính | Chi tiết |
