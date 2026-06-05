@@ -98,7 +98,7 @@ Review the category filtering logic and verify that category values are correctl
 
 --- 
 
-## BUG-03 Điệp
+## BUG-03 
 | Attribute         | Details          |
 | ----------------- | ---------------- |
 | **Bug ID**        | BUG_TC33         |
@@ -136,7 +136,7 @@ Reduces search efficiency, as users must enter the exact letter casing (uppercas
 **Suggested Fix:**
 Make the category filter case-insensitive by normalizing both the user input and stored category values before comparison. The filter should return the same results regardless of uppercase or lowercase letters.
 
-## BUG-04 Điệp
+## BUG-04 
 | Attribute         | Details          |
 | ----------------- | ---------------- |
 | **Bug ID**        | BUG_TC14         |
@@ -175,7 +175,7 @@ The absence of a notification message makes it difficult for users to identify t
 **Suggested Fix:**
 Display a clear notification message when a book is unavailable or already borrowed. If the Borrow (+) button is hidden for unavailable books, provide a visible status indicator and explanatory message so users understand why the borrow action cannot be performed.
 
-## BUG-05 Điệp
+## BUG-05 
 | Attribute         | Details          |
 | ----------------- | ---------------- |
 | **Bug ID**        | BUG_TC15         |
@@ -214,7 +214,7 @@ The inaccurate error message may mislead users about the actual cause of the iss
 **Suggested Fix:**
 Display a specific error message for suspended accounts, such as "Member account is suspended. Borrowing books is not allowed." Ensure that suspended and expired account statuses are handled separately and show different messages to accurately reflect the reason for rejection.
 
-## BUG-06 Điệp
+## BUG-06 
 | Attribute         | Details          |
 | ----------------- | ---------------- |
 | **Bug ID**        | BUG_TC34         |
@@ -251,7 +251,7 @@ Impacts both the user interface and user experience.
 
 **Suggested Fix:**
 Implement proper localization for error messages. When the interface language is set to English, display "The member account has expired. Borrowing books is not allowed." instead of the Vietnamese message. Ensure all system messages are translated according to the selected language setting.
-## BUG-02
+## BUG-07
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
@@ -297,7 +297,7 @@ Review the email validation logic and ensure that valid email formats are accept
 
 ---
 
-## BUG-03
+## BUG-08
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
@@ -344,7 +344,7 @@ Verify the borrowing validation logic before creating a new borrowing record. Th
 
 ---
 
-## BUG-04
+## BUG-09
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
@@ -392,7 +392,7 @@ Review the search logic and ensure that the system supports partial keyword matc
 
 ---
 
-## BUG-05
+## BUG-10
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
@@ -438,7 +438,7 @@ Member account has expired. Borrowing is not allowed.
 **Đề xuất xử lý:**
 Review the account status validation logic and ensure that suspended accounts display a suspension-related message instead of an expiration-related message.
 
-## BUG-06
+## BUG-11
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
@@ -488,7 +488,7 @@ The system displays borrowing records belonging to another member (Nguyen Hoc Ba
 Implement access control validation to ensure members can only access their own borrowing records. Search requests should be restricted to the currently authenticated member.
 
 
-## BUG-07
+## BUG-12
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
