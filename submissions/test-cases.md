@@ -181,8 +181,7 @@
 | TC-17 | Reject borrow — member account has **Expired** | `binh.pham` (MEM005, **Expired**) is logged in. BOOK001 is "Available". | 1. Log in as `binh.pham` 2. Go to **Books** tab → BOOK001 3. Click **Borrow** | Account: `binh.pham@email.com` / `password123` Book: BOOK001 | System rejects and shows reason **"Expired"**. No slip created. | REQ-04 | Decision Table |
 | TC-18 | **BVA max−1=2** — Allow borrowing the 3rd book (at valid boundary) | `ba.nguyen` is logged in and **currently borrowing exactly 2 books**. An "Available" book exists to borrow. | 1. Log in as `ba.nguyen` 2. Borrow 1 book (if not yet at 2) to reach 2 books borrowed 3. Go to **Books** tab → select an Available book (e.g. BOOK002) 4. Click **Borrow** | Account: `ba.nguyen@email.com` / `password123` Books borrowed before action: **2** | Borrow **successful** — 3rd slip created. Total currently borrowed = **3**. No error message. | REQ-04 | BVA |
 | TC-19 | **BVA max=3** — Reject borrowing 4th book (exceeds limit) | `ba.nguyen` is logged in and **currently borrowing exactly 3 books** (limit reached). An "Available" book exists. | 1. Ensure `ba.nguyen` is borrowing exactly 3 books 2. Go to **Books** tab → select an Available book 3. Click **Borrow** | Account: `ba.nguyen@email.com` / `password123` Books borrowed before action: **3** | System rejects and shows message: **"3-book limit reached"** (or equivalent). No 4th slip created. | REQ-04 | BVA |
-| TC-20 | System rejects and shows reason in Vietnamese and English | `binh.pham` (MEM005, **Expired**) is logged in. BOOK001 is "Available". | 1. Log in as `binh.pham` 2. Go to **Books** tab → BOOK001 3. Click **Borrow** | Account: `binh.pham@email.com` / `password123` Book: BOOK001 | Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI or "The member account has expired. Borrowing books is not allowed." in EN
- | REQ-04 | Decision Table |
+| TC-20 | System rejects and shows reason in Vietnamese and English | `binh.pham` (MEM005, **Expired**) is logged in. BOOK001 is "Available". | 1. Log in as `binh.pham` 2. Go to **Books** tab → BOOK001 3. Click **Borrow** | Account: `binh.pham@email.com` / `password123` Book: BOOK001 | Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI or "The member account has expired. Borrowing books is not allowed." in EN | REQ-04 | Decision Table |
 ---
 
 ### Group 5 — Return Book (REQ-05) | 4 TCs | Technique: EP
@@ -255,7 +254,7 @@
 | Login | 5 | REQ-01 | 2 Happy / 3 Negative | Decision Table |
 | View Book List | 3 | REQ-02 | 3 Happy | EP |
 | Search and Filter | 5 | REQ-03 | 4 Happy / 1 Negative | EP |
-| Borrow Book | 6 | REQ-04 | 1 Happy / 3 Negative / 2 BVA | Decision Table + BVA |
+| Borrow Book | 6 | REQ-04 | 1 Happy / 4 Negative / 2 BVA | Decision Table + BVA |
 | Return Book | 4 | REQ-05, REQ-08 | 2 Happy / 2 Negative | EP |
 | Overdue Processing | 3 | REQ-06 | 2 Happy / 1 Negative | EP |
 | Member Management | 4 | REQ-07 | 1 Happy / 2 Negative / 1 BVA | EP + BVA |
