@@ -53,20 +53,18 @@ Ensure that the "Incorrect password" validation message is displayed under the P
 ---
 
 
-## BUG-02
+## BUG-02:Category filter does not work and returns an empty result for all valid category values.
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
-| **Mã lỗi** | BUG-01 |
-| **TC liên quan** | TC-12 |
+| **Mã lỗi** | BUG-02 |
+| **TC liên quan** | TC-13 |
 | **REQ liên quan** | REQ-03 |
 | **Mức độ** | High |
 | **Người phát hiện** | Nguyen Phuc Duc |
 | **Ngày phát hiện** |29/05/2026 |
 | **Trạng thái** | Open |
 
-**Tiêu đề:**
-Category filter does not work and returns an empty result for all valid category values.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -89,10 +87,10 @@ The system should display books belonging to the selected category. For example,
 The system displays the message "No books found". The result list is empty even though books belonging to the selected category exist in the system.
 
 **Tác động:**
-Users cannot use the category filtering feature. This violates REQ-03 and causes TC-12 to fail.
+Users cannot use the category filtering feature. This violates REQ-03
 **Minh chứng:**
-![alt text]({C01E8E70-8053-4BAB-A3E5-017B3DA6BE33}.png)
-![alt text]({BF32ECAC-BA9D-4635-A941-CE1F796F7E28}.png)
+
+![TC13](test-case-image/TC13.png)
 **Đề xuất xử lý:**
 Review the category filtering logic and verify that category values are correctly matched against the stored book categories.
 
@@ -255,8 +253,8 @@ Implement proper localization for error messages. When the interface language is
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
-| **Mã lỗi** | BUG-02 |
-| **TC liên quan** | TC-25 |
+| **Mã lỗi** | BUG-07 |
+| **TC liên quan** | TC-28 |
 | **REQ liên quan** | REQ-07 |
 | **Mức độ** | High |
 | **Người phát hiện** | Nguyen Phuc Duc |
@@ -288,29 +286,26 @@ The system should accept the valid email address and successfully create a new m
 The system displays the error message "Invalid email address" and prevents member creation.
 
 **Tác động:**
-Librarians cannot add new members. The Member Management feature (REQ-07) becomes unusable and TC-25 fails.
+Librarians cannot add new members. The Member Management feature (REQ-07) becomes unusable.
 **Minh chứng:**
-![alt text]({BE777298-F752-4E33-830C-FC73C24D9E2C}.png)
+![TC28](test-case-image/TC28.png)
 
 **Đề xuất xử lý:**
 Review the email validation logic and ensure that valid email formats are accepted correctly.
 
 ---
 
-## BUG-08
+## BUG-08:The system allows a member to borrow more than the maximum limit of three books.
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
-| **Mã lỗi** | BUG-03 |
-| **TC liên quan** | TC-18 |
+| **Mã lỗi** | BUG-08 |
+| **TC liên quan** | TC-19 |
 | **REQ liên quan** | REQ-04 |
 | **Mức độ** | High |
 | **Người phát hiện** | Nguyen Phuc Duc |
 | **Ngày phát hiện** | 29/05/2026 |
 | **Trạng thái** | Open |
-
-**Tiêu đề:**
-The system allows a member to borrow more than the maximum limit of three books.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -337,18 +332,18 @@ The system creates an additional borrowing record, allowing the member to have f
 This violates the borrowing limit business rule, causes inaccurate borrowing records, and results in TC-18 failing.
 
 **Minh chứng:**
-![alt text]({B464CAB8-D20B-4056-A63B-7112416E0FD4}.png)
+![alt text](test-case-image/TC19.png)
 
 **Đề xuất xử lý:**
 Verify the borrowing validation logic before creating a new borrowing record. The system should only allow borrowing when the number of active loans is less than three.
 
 ---
 
-## BUG-09
+## BUG-09:Search function does not return matching books when using valid Vietnamese and non-accented keywords.
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
-| **Mã lỗi** | BUG-04 |
+| **Mã lỗi** | BUG-09 |
 | **TC liên quan** | TC-09 |
 | **REQ liên quan** | REQ-03 |
 | **Mức độ** | Medium |
@@ -356,8 +351,6 @@ Verify the borrowing validation logic before creating a new borrowing record. Th
 | **Ngày phát hiện** |31/05/2026 |
 | **Trạng thái** | Open |
 
-**Tiêu đề:**
-Search function does not return matching books when using valid Vietnamese and non-accented keywords.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -385,27 +378,24 @@ The system displays "No books found" for both "Lập" and "lap", even though the
 Users cannot reliably search for books using Vietnamese keywords or non-accented keywords. This affects the Search Books feature and causes TC-09 to fail.
 
 **Minh chứng:**
-![alt text]({9EB6F3F1-E4FD-4605-A36D-F2C0E398337B}.png)
-![alt text]({3456BE69-DBBB-4040-B11F-24BAC4195670}.png)
+![TC09-1](submissions/test-case-image/TC09-1.png)
+![TC09-2](submissions/test-case-image/TC09-2.png)
 **Đề xuất xử lý:**
 Review the search logic and ensure that the system supports partial keyword matching, Vietnamese characters, and non-accented keyword normalization.
 
 ---
 
-## BUG-10
+## BUG-10:System displays an incorrect rejection reason when a suspended member attempts to borrow a book.
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
-| **Mã lỗi** | BUG-05 |
-| **TC liên quan** | TC-15 |
+| **Mã lỗi** | BUG-010 |
+| **TC liên quan** | TC-16 |
 | **REQ liên quan** | REQ-04 |
-| **Mức độ** | Low |
+| **Mức độ** | Medium |
 | **Người phát hiện** | Nguyen Phuc Duc |
 | **Ngày phát hiện** |31/05/2026 |
 | **Trạng thái** | Open |
-
-**Tiêu đề:**
-System displays an incorrect rejection reason when a suspended member attempts to borrow a book.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -415,7 +405,6 @@ System displays an incorrect rejection reason when a suspended member attempts t
 **Điều kiện tiên quyết:**
 - Logged in with a suspended member account (e.g., cu.le@email.com).
 - At least one book is available for borrowing.
-
 
 **Bước tái hiện:**
 1. Select an available book from the Books tab.
@@ -434,24 +423,21 @@ Member account has expired. Borrowing is not allowed.
 - Causes TC-15 to fail.
 
 **Minh chứng:**
-![alt text]({C19A29F5-F064-440A-A7C4-F1C16ADDB771}.png)
+![alt text](test-case-image/TC16.png)
 **Đề xuất xử lý:**
 Review the account status validation logic and ensure that suspended accounts display a suspension-related message instead of an expiration-related message.
 
-## BUG-11
+## BUG-11:Member can view borrowing records of another member.
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
 | **Mã lỗi** | BUG-011 |
 | **TC liên quan** | TC-32 |
-| **REQ liên quan** | REQ-05 |
+| **REQ liên quan** | REQ-08 |
 | **Mức độ** | High |
 | **Người phát hiện** | Nguyen Phuc Duc |
 | **Ngày phát hiện** |31/05/2026 |
 | **Trạng thái** | Open |
-
-**Tiêu đề:**
-Member can view borrowing records of another member.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -459,14 +445,13 @@ Member can view borrowing records of another member.
 - Ngôn ngữ giao diện: Tiếng Việt
 
 **Điều kiện tiên quyết:**
-- Logged in with a suspended member account (e.g., cu.le@email.com).
+- Logged in as ba.nguyen@email.com
 - Another member account exists in the system with borrowing records.
-
 
 **Bước tái hiện:**
 1. Navigate to the Borrow / Return screen.
 2. Open the "Tra cứu phiếu mượn" tab.
-3. Enter another member's ID (e.g., MEM002) into the search field.
+3. Enter MEM006 into the search field.
 4. Click the "Tra cứu" button.
 5. Observe the displayed borrowing records.
 
@@ -483,25 +468,21 @@ The system displays borrowing records belonging to another member (Nguyen Hoc Ba
 - Causes the related test case to fail.
 
 **Minh chứng:**
-![BUG_TC32](image_bug/BUG_TC32.png)
+![TC32](test-case-image/TC32.png)
 **Đề xuất xử lý:**
 Implement access control validation to ensure members can only access their own borrowing records. Search requests should be restricted to the currently authenticated member.
 
-
-## BUG-12
+## BUG-12:Member can return books belonging to another member.
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
 | **Mã lỗi** | BUG-12 |
 | **TC liên quan** | TC-24 |
-| **REQ liên quan** | REQ-05 |
+| **REQ liên quan** | REQ-05, REQ-08 |
 | **Mức độ** | High |
 | **Người phát hiện** | Nguyen Phuc Duc |
 | **Ngày phát hiện** |31/05/2026 |
 | **Trạng thái** | Open |
-
-**Tiêu đề:**
-Member can return books belonging to another member.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179
@@ -509,14 +490,13 @@ Member can return books belonging to another member.
 - Ngôn ngữ giao diện: Tiếng Việt
 
 **Điều kiện tiên quyết:**
-- Logged in with a suspended member account (e.g., cu.le@email.com).
+- Logged in as ba.nguyen@email.com
 - Another member account exists in the system with borrowing records.
-
 
 **Bước tái hiện:**
 1. Navigate to the Borrow / Return screen.
 2. Open the "Tra cứu phiếu mượn" tab.
-3. Enter another member's ID (e.g., MEM002).
+3. Enter MEM006
 4. Click the "Tra cứu" button.
 5. Locate a borrowing record belonging to that member.
 6. Click the "Trả sách" button.
@@ -524,7 +504,6 @@ Member can return books belonging to another member.
 
 **Kết quả mong đợi:**
 The system must prevent members from modifying borrowing records that belong to other members. The Return Book action should only be available for the owner of the borrowing record or authorized librarians.
-
 
 **Kết quả thực tế:**
 The system allows a member to return a book belonging to another member and displays the message "Trả sách thành công."
@@ -536,7 +515,7 @@ The system allows a member to return a book belonging to another member and disp
 - Creates a serious security and data integrity issue.
 
 **Minh chứng:**
-![BUG_TC23](image_bug/BUG_TC24.png)
+![alt text](test-case-image/TC24.png)
 **Đề xuất xử lý:**
 Implement authorization checks before processing return requests. The system should verify that the borrowing record belongs to the currently authenticated user or that the user has librarian privileges.
 
