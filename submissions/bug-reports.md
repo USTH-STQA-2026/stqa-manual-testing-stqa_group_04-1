@@ -442,8 +442,8 @@ Review the account status validation logic and ensure that suspended accounts di
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
-| **Mã lỗi** | BUG-06 |
-| **TC liên quan** | TC-20 |
+| **Mã lỗi** | BUG-011 |
+| **TC liên quan** | TC-32 |
 | **REQ liên quan** | REQ-05 |
 | **Mức độ** | High |
 | **Người phát hiện** | Nguyen Phuc Duc |
@@ -483,7 +483,7 @@ The system displays borrowing records belonging to another member (Nguyen Hoc Ba
 - Causes the related test case to fail.
 
 **Minh chứng:**
-![alt text]({09C0A6A5-B812-48FD-A5F1-FFF6B953D1C2}.png)
+![BUG_TC32](image_bug/BUG_TC32.png)
 **Đề xuất xử lý:**
 Implement access control validation to ensure members can only access their own borrowing records. Search requests should be restricted to the currently authenticated member.
 
@@ -492,8 +492,8 @@ Implement access control validation to ensure members can only access their own 
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
-| **Mã lỗi** | BUG-07 |
-| **TC liên quan** | TC-32 |
+| **Mã lỗi** | BUG-12 |
+| **TC liên quan** | TC-24 |
 | **REQ liên quan** | REQ-05 |
 | **Mức độ** | High |
 | **Người phát hiện** | Nguyen Phuc Duc |
@@ -536,8 +536,10 @@ The system allows a member to return a book belonging to another member and disp
 - Creates a serious security and data integrity issue.
 
 **Minh chứng:**
-![alt text]({949FDFDF-F7BB-4AFE-8B8E-4A2D72FF9C56}.png)
+![BUG_TC23](image_bug/BUG_TC24.png)
 **Đề xuất xử lý:**
 Implement authorization checks before processing return requests. The system should verify that the borrowing record belongs to the currently authenticated user or that the user has librarian privileges.
+
+
 
 <!-- Copy template BUG trên để thêm BUG-03, BUG-04, ... cho mỗi TC Fail -->

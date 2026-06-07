@@ -47,6 +47,39 @@
 | TC-34 |  Borrow Book   |  Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI or "The member account has expired. Borrowing books is not allowed." in EN|Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI and EN |**Fail**|-|BUG |
 ---
 
+#### REQ-05/Return Book
+
+| TC ID | Functional Group | Expected Result (Summary) | Actual Result | Actual Result | Proof | Bug |
+|--------|------------------|--------------------------|---------------|---------------|-------|-----|
+| TC-21 | Return Book | Return successful. BR003 changes to "Returned". BOOK013 changes to "Available". | BR003 was returned successfully. Status changed to "Returned" and BOOK013 became "Available". | **Pass** | - | - |
+| TC-22 | Return Book | System shows overdue warning before confirmation. After return: BR001 → "Returned", BOOK003 → "Available". | Overdue warning was not handled correctly because overdue status processing is inconsistent. | **Fail** | Screenshot | BUG-02 |
+| TC-23 | Return Book | BOOK003 can be borrowed normally after being returned. | BOOK003 could be borrowed again after return and a new borrow slip was created. | **Pass** | - | - |
+| TC-24 | Return Book | Member cannot return a book borrowed by another member. | Member account was able to return a book belonging to another member. | **Fail** | ![BUG_TC24](image_bug/BUG_TC24.png) | BUG-06 |
+
+#### REQ-06/Overdue Processing
+
+| TC ID | Functional Group | Expected Result (Summary) | Actual Result | Actual Result | Proof | Bug |
+|--------|------------------|--------------------------|---------------|---------------|-------|-----|
+| TC-25 | Overdue Processing | BR001 changes to "Overdue". BR003 remains "Borrowed". | Overdue check produced inconsistent results. Borrow slips were not flagged correctly. | **Fail** | Screenshot | BUG-02 |
+| TC-26 | Overdue Processing | "Check Overdue" button is hidden from Members. | The "Check Overdue" button was not displayed for Member accounts. | **Pass** | - | - |
+| TC-27 | Overdue Processing | Member sees BR001 with status "Overdue". | BR001 status was not updated/displayed correctly after overdue processing. | **Fail** | Screenshot | BUG-02 |
+
+#### REQ-07/Member Management
+
+| TC ID | Functional Group | Expected Result (Summary) | Actual Result | Actual Result | Proof | Bug |
+|--------|------------------|--------------------------|---------------|---------------|-------|-----|
+| TC-28 | Member Management | New member appears in the list with status "Active". | System rejected valid email address `test.new@gmail.com`. No member was created. | **Fail** | Screenshot | BUG-08 |
+| TC-29 | Member Management | Invalid email `user@domain` is rejected. | Unable to verify invalid-email validation because the system already rejects valid email addresses. | **Blocked** | Screenshot | BUG-08 |
+| TC-30 | Member Management | Existing email is rejected with duplicate-email message. | Unable to verify duplicate-email validation because Add Member fails before reaching this validation. | **Blocked** | Screenshot | BUG-08 |
+| TC-31 | Member Management | 9-digit phone number is rejected. | Unable to verify phone-number validation because the form rejects valid email input. | **Blocked** | Screenshot | BUG-08 |
+
+#### REQ-08/Borrow Slip Lookup
+
+| TC ID | Functional Group | Expected Result (Summary) | Actual Result | Actual Result | Proof | Bug |
+|--------|------------------|--------------------------|---------------|---------------|-------|-----|
+| TC-32 | Borrow Slip Lookup | Member sees only their own borrow slips. | Member account could view borrow slips belonging to other members. | **Fail** | submissions/BUG_TC32.png | BUG-011 |
+| TC-33 | Borrow Slip Lookup | Librarian can view all borrow slips from all members. | Librarian could view all borrow slips from multiple members. | **Pass** | - | - |
+| TC-34 | Borrow Slip Lookup | Borrow slip displays all required fields. | BR001 displayed Slip ID, Book Borrowed, Borrow Date, Due Date and Status correctly. | **Pass** | - | - |
 ## Tổng hợp kết quả
 
 | Chỉ số | Giá trị |
