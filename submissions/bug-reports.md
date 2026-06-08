@@ -332,7 +332,7 @@ The system creates an additional borrowing record, allowing the member to have f
 This violates the borrowing limit business rule, causes inaccurate borrowing records, and results in TC-18 failing.
 
 **Minh chứng:**
-![alt text](test-case-image/TC19.png)
+![TC19](test-case-image/TC19.png)
 
 **Đề xuất xử lý:**
 Verify the borrowing validation logic before creating a new borrowing record. The system should only allow borrowing when the number of active loans is less than three.
@@ -515,10 +515,60 @@ The system allows a member to return a book belonging to another member and disp
 - Creates a serious security and data integrity issue.
 
 **Minh chứng:**
-![alt text](test-case-image/TC24.png)
+![TC24](test-case-image/TC24.png)
 **Đề xuất xử lý:**
 Implement authorization checks before processing return requests. The system should verify that the borrowing record belongs to the currently authenticated user or that the user has librarian privileges.
 
+## BUG-13: No overdue warning displayed when returning an overdue book.
+
+| Thuộc tính          | Chi tiết        |
+| ------------------- | --------------- |
+| **Mã lỗi**          | BUG-13          |
+| **TC liên quan**    | TC-22           |
+| **REQ liên quan**   | REQ-05          |
+| **Mức độ**          | Medium          |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện**  | 07/06/2026      |
+| **Trạng thái**      | Open            |
+
+**Môi trường:**
+
+* Trình duyệt: Chrome 148.0.7778.179
+* Hệ điều hành: Windows 11 IoT Enterprise LTSC
+* Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+
+* Logged in as biet.hoang@email.com.
+* Borrowing record BR003 exists with due date 15/10/2024.
+* Current system date is later than the due date.
+
+**Bước tái hiện:**
+
+1. Navigate to the Borrow / Return screen.
+2. Open the "Phiếu mượn của tôi" tab.
+3. Locate borrowing record BR003.
+4. Click the "Trả sách" button.
+5. Observe the system response after the return is processed.
+
+**Kết quả mong đợi:**
+When a book is returned after its due date, the system must display an overdue warning indicating that the book was returned late.
+
+**Kết quả thực tế:**
+The system successfully returns the book and displays only the message "Trả sách thành công." No overdue warning is shown.
+
+**Tác động:**
+
+* Violates the overdue handling requirement defined in REQ-05.
+* Users are not informed that the returned book was overdue.
+* Reduces visibility of overdue return situations.
+* May cause librarians to miss overdue return information.
+
+**Minh chứng:**
+![TC22](test-case-image/TC22.png)
+
+**Đề xuất xử lý:**
+After processing a return request, the system should compare the return date with the due date. If the return date exceeds the due date, an overdue warning message should be displayed to the user before or together with the success notification.
 
 
 <!-- Copy template BUG trên để thêm BUG-03, BUG-04, ... cho mỗi TC Fail -->
