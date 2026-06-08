@@ -10,11 +10,11 @@
 | **Report Date** | ` 29/05/2026 ` |
 
 ---
-## BUG-01
+## BUG-01:The message is displayed in the wrong field.
 
 | Attribute         | Details          |
 | ----------------- | ---------------- |
-| **Bug ID**        | BUG_TC04         |
+| **Bug ID**        | BUG-01         |
 | **Related TC**    | TC-04            |
 | **Related REQ**   | REQ-01           |
 | **Severity**      | Low              |
@@ -45,7 +45,7 @@ The system displays the error message "Mật khẩu không đúng" in the **Emai
 Affects the user interface and may cause user confusion.
 
 ** Proof:**
-![BUG_TC04](image_bug/BUG_TC04.png)
+![TC04](test-case-image/TC04.png)
 
 **Suggested Fix:**
 Ensure that the "Incorrect password" validation message is displayed under the Password field instead of the Email field. Verify that validation messages are mapped to the correct input fields.
@@ -96,11 +96,11 @@ Review the category filtering logic and verify that category values are correctl
 
 --- 
 
-## BUG-03 
+## BUG-03:Category filter does not support case-insensitive matching.
 | Attribute         | Details          |
 | ----------------- | ---------------- |
-| **Bug ID**        | BUG_TC33         |
-| **Related TC**    | TC-33            |
+| **Bug ID**        | BUG-03        |
+| **Related TC**    | TC-13            |
 | **Related REQ**   | REQ-03           |
 | **Severity**      | Medium              |
 | **Reported By**   | Nguyễn Khải Điệp |
@@ -129,16 +129,16 @@ List is empty, shows message "No books found".
 Reduces search efficiency, as users must enter the exact letter casing (uppercase/lowercase) to find matching results.
 
 **Proof:**
-![BUG_TC33](image_bug/BUG_TC33.png)
+![TC13-1](test-case-image/TC13-1.png) ![TC13-2](test-case-image/TC13-2.png)
 
 **Suggested Fix:**
 Make the category filter case-insensitive by normalizing both the user input and stored category values before comparison. The filter should return the same results regardless of uppercase or lowercase letters.
 
-## BUG-04 
+## BUG-04:No error message is displayed for already borrowed books.
 | Attribute         | Details          |
 | ----------------- | ---------------- |
-| **Bug ID**        | BUG_TC14         |
-| **Related TC**    | TC-14            |
+| **Bug ID**        | BUG-04        |
+| **Related TC**    | TC-15            |
 | **Related REQ**   | REQ-04           |
 | **Severity**      | Low              |
 | **Reported By**   | Nguyễn Khải Điệp |
@@ -168,16 +168,16 @@ BOOK003 does not have the (+) button,the borrow action cannot be performed.No er
 The absence of a notification message makes it difficult for users to identify the issue.
 
 ** Proof:**
-![BUG_TC14](image_bug/BUG_TC14.png)
+![TC15](test-case-image/TC15.png) 
 
 **Suggested Fix:**
 Display a clear notification message when a book is unavailable or already borrowed. If the Borrow (+) button is hidden for unavailable books, provide a visible status indicator and explanatory message so users understand why the borrow action cannot be performed.
 
-## BUG-05 
+## BUG-05:The error message is the same as the "Expired" case.
 | Attribute         | Details          |
 | ----------------- | ---------------- |
-| **Bug ID**        | BUG_TC15         |
-| **Related TC**    | TC-15            |
+| **Bug ID**        | BUG-05         |
+| **Related TC**    | TC-16            |
 | **Related REQ**   | REQ-04           |
 | **Severity**      | Medium              |
 | **Reported By**   | Nguyễn Khải Điệp |
@@ -207,16 +207,60 @@ System rejects and shows error message:"Thành viên đã hết hạn. Không th
 The inaccurate error message may mislead users about the actual cause of the issue.
 
 ** Proof:**
-![BUG_TC15](image_bug/BUG_TC15.png)
+![TC16](image_bug/TC16.png)
 
 **Suggested Fix:**
 Display a specific error message for suspended accounts, such as "Member account is suspended. Borrowing books is not allowed." Ensure that suspended and expired account statuses are handled separately and show different messages to accurately reflect the reason for rejection.
+## BUG-06:The system allows a member to borrow more than the maximum limit of three books.
 
-## BUG-06 
+| Thuộc tính | Chi tiết |
+|-----------|---------|
+| **Mã lỗi** | BUG-06 |
+| **TC liên quan** | TC-19 |
+| **REQ liên quan** | REQ-04 |
+| **Mức độ** | High |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện** | 29/05/2026 |
+| **Trạng thái** | Open |
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+Member account is active.
+At least four books are available for borrowing.
+
+**Bước tái hiện:**
+1. log in account member Trần Dực Dẫm.
+2. Borrow "Lập trình Flutter cơ bản".
+3. Borrow "Cấu trúc dữ liệu và giải thuật".
+4. Borrow "Trí tuệ nhân tạo đại cương".
+5. Borrow "Mạng máy tính".
+
+**Kết quả mong đợi:**
+When a member has already borrowed three books, the system should reject any additional borrowing request and display a message indicating that the borrowing limit has been reached.
+**Kết quả thực tế:**
+The system creates an additional borrowing record, allowing the member to have four active borrowed books at the same time.
+
+**Tác động:**
+This violates the borrowing limit business rule, causes inaccurate borrowing records, and results in TC-18 failing.
+
+**Minh chứng:**
+![TC19](test-case-image/TC19.png)
+
+**Đề xuất xử lý:**
+Verify the borrowing validation logic before creating a new borrowing record. The system should only allow borrowing when the number of active loans is less than three.
+
+
+---
+
+## BUG-07:The error message is displayed in Vietnamese while the system language is set to English.
 | Attribute         | Details          |
 | ----------------- | ---------------- |
-| **Bug ID**        | BUG_TC34         |
-| **Related TC**    | TC-34            |
+| **Bug ID**        | BUG-07         |
+| **Related TC**    | TC-20            |
 | **Related REQ**   | REQ-04           |
 | **Severity**      | High              |
 | **Reported By**   | Nguyễn Khải Điệp |
@@ -245,15 +289,60 @@ Shows reason "Thành viên đã hết hạn. Không thể mượn sách." in VI 
 **Impact:**
 Impacts both the user interface and user experience.
 ** Proof:**
-![BUG_TC34](image_bug/BUG_TC34.png)
+![TC20](test-case-image/TC20.png)
 
 **Suggested Fix:**
 Implement proper localization for error messages. When the interface language is set to English, display "The member account has expired. Borrowing books is not allowed." instead of the Vietnamese message. Ensure all system messages are translated according to the selected language setting.
-## BUG-07
+
+## BUG-08:Search function does not return matching books when using valid Vietnamese and non-accented keywords.
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
-| **Mã lỗi** | BUG-07 |
+| **Mã lỗi** | BUG-08 |
+| **TC liên quan** | TC-35 |
+| **REQ liên quan** | REQ-03 |
+| **Mức độ** | Medium |
+| **Người phát hiện** | Nguyen Phuc Duc |
+| **Ngày phát hiện** |31/05/2026 |
+| **Trạng thái** | Open |
+
+
+**Môi trường:**
+- Trình duyệt: Chrome 148.0.7778.179
+- Hệ điều hành: Windows 11 IoT Enterprise LTSC
+- Ngôn ngữ giao diện: Tiếng Việt
+
+**Điều kiện tiên quyết:**
+- User is logged into the system.
+- User is on the Books tab.
+- The book "Lập trình Flutter cơ bản" exists in the book list.
+
+**Bước tái hiện:**
+1. Enter the keyword "Lập" into the search box.
+2. Observe the search results.
+3. Clear the search box.
+4. Enter the keyword "lap" into the search box.
+5. Observe the search results.
+
+**Kết quả mong đợi:**
+The system should display the book "Lập trình Flutter cơ bản" because its title matches the entered keywords.
+**Kết quả thực tế:**
+The system displays "No books found" for both "Lập" and "lap", even though the matching book exists in the system.
+
+**Tác động:**
+Users cannot reliably search for books using Vietnamese keywords or non-accented keywords. This affects the Search Books feature and causes TC-09 to fail.
+
+**Minh chứng:**
+![TC35-1](test-case-image/TC35-1.png)
+![TC35-2](test-case-image/TC35-2.png)
+**Đề xuất xử lý:**
+Review the search logic and ensure that the system supports partial keyword matching, Vietnamese characters, and non-accented keyword normalization.
+
+## BUG-09
+
+| Thuộc tính | Chi tiết |
+|-----------|---------|
+| **Mã lỗi** | BUG-09 |
 | **TC liên quan** | TC-28 |
 | **REQ liên quan** | REQ-07 |
 | **Mức độ** | High |
@@ -295,95 +384,10 @@ Review the email validation logic and ensure that valid email formats are accept
 
 ---
 
-## BUG-08:The system allows a member to borrow more than the maximum limit of three books.
-
-| Thuộc tính | Chi tiết |
-|-----------|---------|
-| **Mã lỗi** | BUG-08 |
-| **TC liên quan** | TC-19 |
-| **REQ liên quan** | REQ-04 |
-| **Mức độ** | High |
-| **Người phát hiện** | Nguyen Phuc Duc |
-| **Ngày phát hiện** | 29/05/2026 |
-| **Trạng thái** | Open |
-
-**Môi trường:**
-- Trình duyệt: Chrome 148.0.7778.179
-- Hệ điều hành: Windows 11 IoT Enterprise LTSC
-- Ngôn ngữ giao diện: Tiếng Việt
-
-**Điều kiện tiên quyết:**
-Member account is active.
-At least four books are available for borrowing.
-
-**Bước tái hiện:**
-1. log in account member Trần Dực Dẫm.
-2. Borrow "Lập trình Flutter cơ bản".
-3. Borrow "Cấu trúc dữ liệu và giải thuật".
-4. Borrow "Trí tuệ nhân tạo đại cương".
-5. Borrow "Mạng máy tính".
-
-**Kết quả mong đợi:**
-When a member has already borrowed three books, the system should reject any additional borrowing request and display a message indicating that the borrowing limit has been reached.
-**Kết quả thực tế:**
-The system creates an additional borrowing record, allowing the member to have four active borrowed books at the same time.
-
-**Tác động:**
-This violates the borrowing limit business rule, causes inaccurate borrowing records, and results in TC-18 failing.
-
-**Minh chứng:**
-![TC19](test-case-image/TC19.png)
-
-**Đề xuất xử lý:**
-Verify the borrowing validation logic before creating a new borrowing record. The system should only allow borrowing when the number of active loans is less than three.
 
 ---
 
-## BUG-09:Search function does not return matching books when using valid Vietnamese and non-accented keywords.
 
-| Thuộc tính | Chi tiết |
-|-----------|---------|
-| **Mã lỗi** | BUG-09 |
-| **TC liên quan** | TC-09 |
-| **REQ liên quan** | REQ-03 |
-| **Mức độ** | Medium |
-| **Người phát hiện** | Nguyen Phuc Duc |
-| **Ngày phát hiện** |31/05/2026 |
-| **Trạng thái** | Open |
-
-
-**Môi trường:**
-- Trình duyệt: Chrome 148.0.7778.179
-- Hệ điều hành: Windows 11 IoT Enterprise LTSC
-- Ngôn ngữ giao diện: Tiếng Việt
-
-**Điều kiện tiên quyết:**
-- User is logged into the system.
-- User is on the Books tab.
-- The book "Lập trình Flutter cơ bản" exists in the book list.
-
-**Bước tái hiện:**
-1. Enter the keyword "Lập" into the search box.
-2. Observe the search results.
-3. Clear the search box.
-4. Enter the keyword "lap" into the search box.
-5. Observe the search results.
-
-**Kết quả mong đợi:**
-The system should display the book "Lập trình Flutter cơ bản" because its title matches the entered keywords.
-**Kết quả thực tế:**
-The system displays "No books found" for both "Lập" and "lap", even though the matching book exists in the system.
-
-**Tác động:**
-Users cannot reliably search for books using Vietnamese keywords or non-accented keywords. This affects the Search Books feature and causes TC-09 to fail.
-
-**Minh chứng:**
-![TC09-1](submissions/test-case-image/TC09-1.png)
-![TC09-2](submissions/test-case-image/TC09-2.png)
-**Đề xuất xử lý:**
-Review the search logic and ensure that the system supports partial keyword matching, Vietnamese characters, and non-accented keyword normalization.
-
----
 
 ## BUG-10:System displays an incorrect rejection reason when a suspended member attempts to borrow a book.
 
