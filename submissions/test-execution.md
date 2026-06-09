@@ -85,7 +85,7 @@
 
 | Chỉ số | Giá trị |
 |--------|---------|
-| Tổng số test case | `<!-- số -->` |
+| Tổng số test case | `35` |
 | Pass | `<!-- số -->` |
 | Fail | `<!-- số -->` |
 | Blocked | `<!-- số -->` |
