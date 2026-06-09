@@ -86,11 +86,11 @@
 | Chỉ số | Giá trị |
 |--------|---------|
 | Tổng số test case | `35` |
-| Pass | `<!-- số -->` |
-| Fail | `<!-- số -->` |
+| Pass | `22` |
+| Fail | `13` |
 | Blocked | `<!-- số -->` |
 | Not Run | `<!-- số -->` |
-| **Tỷ lệ Pass** | `<!-- xx% -->` |
+| **Tỷ lệ Pass** | `62,8%` |
 
 ### Kết quả theo nhóm chức năng
 
