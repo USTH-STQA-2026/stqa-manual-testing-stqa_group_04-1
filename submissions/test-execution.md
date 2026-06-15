@@ -63,7 +63,7 @@
 |--------|------------------|--------------------------|---------------|---------------|-------|-----|
 | TC-25 | Overdue Processing | BR001 changes to "Overdue". BR003 remains "Borrowed". | Overdue check produced inconsistent results. Borrow slips were not flagged correctly. | **Pass** | ![TC25](test-case-image/TC25.png) | - |
 | TC-26 | Overdue Processing | "Check Overdue" button is hidden from Members. | The "Check Overdue" button was not displayed for Member accounts. | **Pass** | ![TC26](test-case-image/TC26.png) | - |
-| TC-27 | Overdue Processing | Member sees BR001 with status "Overdue". | BR001 status was not updated/displayed correctly after overdue processing. | **Pass** | ![TC27](test-case-image/TC27.png) | BUG-02 |
+| TC-27 | Overdue Processing | Member sees BR001 with status "Overdue". | BR001 status was not updated/displayed correctly after overdue processing. | **Fail** | ![TC27](test-case-image/TC27.png) | BUG-02 |
 
 #### REQ-07/Member Management
 
@@ -86,14 +86,21 @@
 | Chỉ số | Giá trị |
 |--------|---------|
 | Tổng số test case | `35` |
-| Pass | `22` |
-| Fail | `13` |
-| Blocked | `<!-- số -->` |
+| Pass | `20` |
+| Fail | `12` |
+| Blocked | `3` |
 | Not Run | `<!-- số -->` |
-| **Tỷ lệ Pass** | `62,8%` |
+| **Tỷ lệ Pass** | `57,14%` |
 
 ### Kết quả theo nhóm chức năng
 
 | Nhóm | Tổng TC | Pass | Fail | Tỷ lệ Pass |
 |------|---------|------|------|------------|
-| | | | | |
+|REQ-01/Login |05 |04 |01 |80% |
+|REQ-02/View Book List |03 |03 |00 |100% |
+|REQ-03/Search and Filter Books |06 |04 |02 |66,67% |
+|REQ-04/Borrow Book |07|03 |04 |42,86% |
+|REQ-05/Return Book|04|02 |02 |50% |
+|REQ-06/Overdue Processing|03|02 |01 |66,67% |
+|REQ-07/Member Management|03|00 |01 |0% |
+|REQ-08/Borrow Slip Lookup|03|02 |01 |66,67% |

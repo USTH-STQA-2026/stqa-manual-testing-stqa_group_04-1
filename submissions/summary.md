@@ -19,13 +19,13 @@
 
 | Chỉ số | Giá trị |
 |--------|---------|
-| Tổng số test case | `<!-- -->` |
-| Pass | `<!-- -->` |
-| Fail | `<!-- -->` |
-| Blocked | `<!-- -->` |
+| Tổng số test case | `35` |
+| Pass | `20` |
+| Fail | `12` |
+| Blocked | `3` |
 | Not Run | `<!-- -->` |
-| **Tỷ lệ Pass** | `<!-- xx% -->` |
-| **Số bug phát hiện** | `<!-- -->` |
+| **Tỷ lệ Pass** | `57,14%` |
+| **Số bug phát hiện** | `13` |
 
 ### Phân bổ theo nhóm chức năng
 
