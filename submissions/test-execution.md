@@ -102,5 +102,5 @@
 |REQ-04/Borrow Book |07|03 |04 |42,86% |
 |REQ-05/Return Book|04|02 |02 |50% |
 |REQ-06/Overdue Processing|03|02 |01 |66,67% |
-|REQ-07/Member Management|03|00 |01 |0% |
+|REQ-07/Member Management|04|00 |01 |0% |
 |REQ-08/Borrow Slip Lookup|03|02 |01 |66,67% |
