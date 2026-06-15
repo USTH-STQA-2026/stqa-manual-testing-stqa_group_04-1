@@ -211,6 +211,7 @@ The inaccurate error message may mislead users about the actual cause of the iss
 
 **Suggested Fix:**
 Display a specific error message for suspended accounts, such as "Member account is suspended. Borrowing books is not allowed." Ensure that suspended and expired account statuses are handled separately and show different messages to accurately reflect the reason for rejection.
+
 ## BUG-06:The system allows a member to borrow more than the maximum limit of three books.
 
 | Thuộc tính | Chi tiết |
@@ -338,7 +339,7 @@ Users cannot reliably search for books using Vietnamese keywords or non-accented
 **Đề xuất xử lý:**
 Review the search logic and ensure that the system supports partial keyword matching, Vietnamese characters, and non-accented keyword normalization.
 
-## BUG-09
+## BUG-09:The system rejects valid email addresses when adding a new member.
 
 | Thuộc tính | Chi tiết |
 |-----------|---------|
@@ -350,8 +351,6 @@ Review the search logic and ensure that the system supports partial keyword matc
 | **Ngày phát hiện** | 29/05/2026 |
 | **Trạng thái** | open |
 
-**Tiêu đề:**
-The system rejects valid email addresses when adding a new member.
 
 **Môi trường:**
 - Trình duyệt: Chrome 148.0.7778.179

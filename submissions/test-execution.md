@@ -52,35 +52,35 @@
 
 | TC ID | Functional Group | Expected Result (Summary) | Actual Result | Actual Result | Proof | Bug |
 |--------|------------------|--------------------------|---------------|---------------|-------|-----|
-| TC-21 | Return Book | Return successful. BR003 changes to "Returned". BOOK013 changes to "Available". | BR003 was returned successfully. Status changed to "Returned" and BOOK013 became "Available". | **Pass** | - | - |
-| TC-22 | Return Book | System shows overdue warning before confirmation. After return: BR001 → "Returned", BOOK003 → "Available". | Overdue warning was not handled correctly because overdue status processing is inconsistent. | **Fail** | Screenshot | BUG-02 |
-| TC-23 | Return Book | BOOK003 can be borrowed normally after being returned. | BOOK003 could be borrowed again after return and a new borrow slip was created. | **Pass** | - | - |
-| TC-24 | Return Book | Member cannot return a book borrowed by another member. | Member account was able to return a book belonging to another member. | **Fail** | ![TC24](test-case-image/TC24.png) | BUG-11 |
+| TC-21 | Return Book | Return successful. BR003 changes to "Returned". BOOK013 changes to "Available". | BR003 was returned successfully. Status changed to "Returned" and BOOK013 became "Available". | **Pass** | ![TC21](test-case-image/TC21-1.png) ![TC21](test-case-image/TC21-2.png) | - |
+| TC-22 | Return Book | System shows overdue warning before confirmation. After return: BR001 → "Returned", BOOK003 → "Available". | Overdue warning was not handled correctly because overdue status processing is inconsistent. | **Fail** | ![TC22](test-case-image/TC22.png) | BUG-13 |
+| TC-23 | Return Book | BOOK003 can be borrowed normally after being returned. | BOOK003 could be borrowed again after return and a new borrow slip was created. | **Pass** | ![TC23](test-case-image/TC23.png) | - |
+| TC-24 | Return Book | Member cannot return a book borrowed by another member. | Member account was able to return a book belonging to another member. | **Fail** | ![TC24](test-case-image/TC24.png) | BUG-12 |
 
 #### REQ-06/Overdue Processing
 
 | TC ID | Functional Group | Expected Result (Summary) | Actual Result | Actual Result | Proof | Bug |
 |--------|------------------|--------------------------|---------------|---------------|-------|-----|
-| TC-25 | Overdue Processing | BR001 changes to "Overdue". BR003 remains "Borrowed". | Overdue check produced inconsistent results. Borrow slips were not flagged correctly. | **Fail** | Screenshot | BUG-02 |
-| TC-26 | Overdue Processing | "Check Overdue" button is hidden from Members. | The "Check Overdue" button was not displayed for Member accounts. | **Pass** | - | - |
-| TC-27 | Overdue Processing | Member sees BR001 with status "Overdue". | BR001 status was not updated/displayed correctly after overdue processing. | **Fail** | Screenshot | BUG-02 |
+| TC-25 | Overdue Processing | BR001 changes to "Overdue". BR003 remains "Borrowed". | Overdue check produced inconsistent results. Borrow slips were not flagged correctly. | **Pass** | ![TC25](test-case-image/TC25.png) | - |
+| TC-26 | Overdue Processing | "Check Overdue" button is hidden from Members. | The "Check Overdue" button was not displayed for Member accounts. | **Pass** | ![TC26](test-case-image/TC26.png) | - |
+| TC-27 | Overdue Processing | Member sees BR001 with status "Overdue". | BR001 status was not updated/displayed correctly after overdue processing. | **Pass** | ![TC27](test-case-image/TC27.png) | BUG-02 |
 
 #### REQ-07/Member Management
 
 | TC ID | Functional Group | Expected Result (Summary) | Actual Result | Actual Result | Proof | Bug |
 |--------|------------------|--------------------------|---------------|---------------|-------|-----|
-| TC-28 | Member Management | New member appears in the list with status "Active". | System rejected valid email address `test.new@gmail.com`. No member was created. | **Fail** | Screenshot | BUG-08 |
-| TC-29 | Member Management | Invalid email `user@domain` is rejected. | Unable to verify invalid-email validation because the system already rejects valid email addresses. | **Blocked** | Screenshot | BUG-08 |
-| TC-30 | Member Management | Existing email is rejected with duplicate-email message. | Unable to verify duplicate-email validation because Add Member fails before reaching this validation. | **Blocked** | Screenshot | BUG-08 |
-| TC-31 | Member Management | 9-digit phone number is rejected. | Unable to verify phone-number validation because the form rejects valid email input. | **Blocked** | Screenshot | BUG-08 |
+| TC-28 | Member Management | New member appears in the list with status "Active". | System rejected valid email address `test.new@gmail.com`. No member was created. | **Fail** | ![TC28](test-case-image/TC28.png) | BUG-09 |
+| TC-29 | Member Management | Invalid email `user@domain` is rejected. | Unable to verify invalid-email validation because the system already rejects valid email addresses. | **Blocked** | ![TC28](test-case-image/TC28.png) | BUG-08 |
+| TC-30 | Member Management | Existing email is rejected with duplicate-email message. | Unable to verify duplicate-email validation because Add Member fails before reaching this validation. | **Blocked** | ![TC28](test-case-image/TC28.png) | BUG-08 |
+| TC-31 | Member Management | 9-digit phone number is rejected. | Unable to verify phone-number validation because the form rejects valid email input. | **Blocked** | ![TC28](test-case-image/TC28.png) | BUG-08 |
 
 #### REQ-08/Borrow Slip Lookup
 
 | TC ID | Functional Group | Expected Result (Summary) | Actual Result | Actual Result | Proof | Bug |
 |--------|------------------|--------------------------|---------------|---------------|-------|-----|
-| TC-32 | Borrow Slip Lookup | Member sees only their own borrow slips. | Member account could view borrow slips belonging to other members. | **Fail** | submissions/BUG_TC32.png | BUG-011 |
-| TC-33 | Borrow Slip Lookup | Librarian can view all borrow slips from all members. | Librarian could view all borrow slips from multiple members. | **Pass** | - | - |
-| TC-34 | Borrow Slip Lookup | Borrow slip displays all required fields. | BR001 displayed Slip ID, Book Borrowed, Borrow Date, Due Date and Status correctly. | **Pass** | - | - |
+| TC-32 | Borrow Slip Lookup | Member sees only their own borrow slips. | Member account could view borrow slips belonging to other members. | **Fail** | ![TC32](test-case-image/TC32.png) | BUG-011 |
+| TC-33 | Borrow Slip Lookup | Librarian can view all borrow slips from all members. | Librarian could view all borrow slips from multiple members. | **Pass** | ![TC33](test-case-image/TC33.png) | - |
+| TC-34 | Borrow Slip Lookup | Borrow slip displays all required fields. | BR001 displayed Slip ID, Book Borrowed, Borrow Date, Due Date and Status correctly. | **Pass** | ![TC34](test-case-image/TC34.png) | - |
 ## Tổng hợp kết quả
 
 | Chỉ số | Giá trị |
