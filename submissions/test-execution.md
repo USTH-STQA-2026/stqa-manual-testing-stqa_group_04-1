@@ -89,7 +89,7 @@
 | Pass | `20` |
 | Fail | `12` |
 | Blocked | `3` |
-| Not Run | `<!-- số -->` |
+| Not Run | `0` |
 | **Tỷ lệ Pass** | `57,14%` |
 
 ### Kết quả theo nhóm chức năng
