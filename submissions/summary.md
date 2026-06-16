@@ -8,7 +8,7 @@
 
 |Item|Information|
 |-|-|
-|**Group**|`GROUP\\\_04`|
+|**Group**|`GROUP_04`|
 |**Class**|`252ICT2012.P1`|
 |**Report Date**|`29/05/2026`|
 |**System Under Test**|https://stqa.rbc.vn — v1.0|
