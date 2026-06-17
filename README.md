@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/WBjeZ6BC)
 # STQA Library Manual Testing — Starter Template
 
 Bài tập thực hành **Kiểm thử thủ công (Manual Testing)** cho môn **Kiểm thử và Đảm bảo chất lượng phần mềm (STQA)**.
@@ -15,17 +16,18 @@ Hệ thống cần kiểm thử: **Quản lý mượn sách Thư viện ABC** �
 
 | | Thông tin |
 |---|---|
-| **Tên nhóm** | `<!-- VD: Nhóm 1 -->` |
-| **Lớp** | `<!-- VD: SE001.P11 -->` |
-| **Học kỳ** | `<!-- VD: HK2 2025-2026 -->` |
+| **Tên nhóm** | `GROUP 04` |
+| **Lớp** | `252ICT2012.P1` |
+| **Học kỳ** | ` HK2 2025-2026 ` |
 
 | # | MSSV | Họ và tên | Vai trò |
 |---|------|-----------|---------|
-| 1 | | | Nhóm trưởng |
-| 2 | | | Thành viên |
-| 3 | | | Thành viên |
+| 1 |23BA14051 |Nguyễn Khải Điệp | Nhóm trưởng |
+| 2 |23BA14055 |Nguyễn Phúc Đức | Thành viên |
+| 3 |22BI13374 |Nguyễn Minh Quân | Thành viên |
 | 4 | | | Thành viên |
-
+### Project Repository
+[Click here to view Group 4 Manual Testing](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_04-1.git)
 ---
 
 ## 📖 Trước khi bắt đầu — Đọc gì, ở đâu? / Before You Start
