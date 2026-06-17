@@ -26,7 +26,8 @@ Hệ thống cần kiểm thử: **Quản lý mượn sách Thư viện ABC** �
 | 2 |23BA14055 |Nguyễn Phúc Đức | Thành viên |
 | 3 |22BI13374 |Nguyễn Minh Quân | Thành viên |
 | 4 | | | Thành viên |
-
+### Project Repository
+[Click here to view Group 4 Manual Testing](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_04-1.git)
 ---
 
 ## 📖 Trước khi bắt đầu — Đọc gì, ở đâu? / Before You Start
