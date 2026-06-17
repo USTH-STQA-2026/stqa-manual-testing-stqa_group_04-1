@@ -1,14 +1,12 @@
+
 ### Cross-Assessment Report – Group 10
-| Tiêu chí | Điểm tối đa | Điểm đạt | Nhận xét ngắn |
-|---|---:|---:|---|
-| Input Domain Modeling (IDM) và test design | 2.0 | **1.7** | Có IDM cho đủ REQ-01 → REQ-08, dùng EP/BVA/Decision Table khá rõ. Một số partition/expected result còn hơi rộng hoặc chưa hoàn toàn khớp SRS. |
-| Chất lượng test cases | 2.0 | **1.6** | Có 35 test cases, vượt yêu cầu tối thiểu 20 TC và phủ đủ chức năng chính. Steps, input, expected result nhìn chung rõ. Tuy nhiên một vài TC có expected result gây tranh luận hoặc chưa hợp lý. |
-| Test execution | 2.0 | **1.4** | Có chạy đủ 35 TC, có Pass/Fail/Blocked và proof. Tuy nhiên còn lỗi mapping bug, một số kết luận chưa khớp actual result, có cột bị đặt tên trùng. |
-| Bug reports | 2.0 | **1.5** | Bug report khá đầy đủ: có môi trường, precondition, steps, expected/actual, impact, proof, suggested fix. Nhưng có bug bị trùng ý, ID không nhất quán và một vài severity hơi cao. |
-| Test summary / QA analysis | 1.5 | **1.25** | Summary có số liệu, phân tích điểm mạnh/yếu, severity distribution và priority fix order. Có khai báo AI rõ ràng. Tuy nhiên vẫn có vài mâu thuẫn với execution/bug report. |
-| Format và tính nhất quán giữa các file | 0.5 | **0.25** | Trình bày nhìn chung tốt, nhưng còn lỗi Bug ID, TC mapping và thống kê chưa thật sạch. |
-| **Tổng điểm** | **10.0** | **8.2** | Làm khá tốt, nhưng cần sửa consistency. |
 
-
----
-
+| Criteria                                    | Maximum Score | Awarded Score | Brief Comments                                                                                                                                                                                                                                                                      |
+| ------------------------------------------- | ------------: | ------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Input Domain Modeling (IDM) and Test Design |           2.0 |       **1.7** | IDM covers all requirements from REQ-01 to REQ-08 and applies EP, BVA, and Decision Tables appropriately. However, some partitions and expected results are still somewhat broad or not fully aligned with the SRS.                                                                 |
+| Test Case Quality                           |           2.0 |       **1.6** | The group provided 35 test cases, exceeding the minimum requirement of 20 and covering all major functionalities. Test steps, inputs, and expected results are generally clear. However, a few expected results are debatable or not entirely reasonable.                           |
+| Test Execution                              |           2.0 |       **1.4** | All 35 test cases were executed with Pass/Fail/Blocked statuses and supporting evidence. However, there are issues with bug mapping, some conclusions do not fully match the actual results, and a few columns appear to be duplicated.                                             |
+| Bug Reports                                 |           2.0 |       **1.5** | Bug reports are fairly complete, including environment, preconditions, reproduction steps, expected and actual results, impact, evidence, and suggested fixes. However, some bugs overlap in scope, bug IDs are not fully consistent, and a few severity levels seem overestimated. |
+| Test Summary / QA Analysis                  |           1.5 |      **1.25** | The summary includes relevant metrics, strengths and weaknesses analysis, severity distribution, and fix priority recommendations. AI usage is clearly declared. Nevertheless, there are some inconsistencies between the summary, execution results, and bug reports.              |
+| Formatting and Consistency Across Documents |           0.5 |      **0.25** | Overall presentation is clear and organized. However, inconsistencies remain in bug IDs, test case mapping, and statistical reporting.                                                                                                                                              |
+| **Total Score**                             |      **10.0** |       **8.2** | A solid submission overall, but consistency issues should be addressed to improve quality.                                                                                                                                                                                          |
